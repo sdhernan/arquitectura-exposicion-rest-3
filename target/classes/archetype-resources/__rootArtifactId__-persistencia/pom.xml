@@ -15,6 +15,13 @@
 
 	<name>${artifactId}</name>
 	<description>Módulo de persistencia para ${rootArtifactId}</description>
+	<developers>
+		<developer>
+			<name>Sadot Nahum Hernandez Moreno</name>
+			<email>sadot.hernandez@example.com</email>
+			<organization>Procesar S A de C V</organization>
+		</developer>
+	</developers>
 
 	<dependencies>
 		<!-- Spring Data JPA -->
@@ -34,7 +41,7 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- Jackson para serialización/deserialización JSON -->
+		<!-- Jackson para manejo de JSON -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -51,14 +58,4 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
-
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-jar-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
-
 </project>

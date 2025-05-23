@@ -26,7 +26,7 @@ import ${package}.servicios.config.ServiceConfig;
 /**
  * Clase principal para inicializar la aplicación
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @SpringBootApplication

@@ -27,14 +27,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ${package}.persistencia.dto.ApiErrorDTO;
 import ${package}.persistencia.dto.EjemploDTO;
 import ${package}.servicios.service.EjemploService;
 
 /**
  * Controlador REST para operaciones con Ejemplos
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @RestController

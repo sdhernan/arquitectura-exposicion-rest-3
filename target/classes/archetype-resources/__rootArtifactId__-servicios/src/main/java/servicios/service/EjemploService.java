@@ -20,7 +20,7 @@ import ${package}.persistencia.dto.EjemploDTO;
 /**
  * Interfaz de servicio para operaciones con Ejemplos
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 public interface EjemploService {

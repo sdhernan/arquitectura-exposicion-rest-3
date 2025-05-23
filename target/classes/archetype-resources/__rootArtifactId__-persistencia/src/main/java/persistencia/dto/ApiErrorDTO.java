@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 /**
  * DTO para representar errores de la API
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 public class ApiErrorDTO {

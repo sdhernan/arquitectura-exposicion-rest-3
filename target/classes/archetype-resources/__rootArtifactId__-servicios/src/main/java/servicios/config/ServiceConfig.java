@@ -21,7 +21,7 @@ import ${package}.persistencia.config.PersistenceConfig;
 /**
  * Configuración de servicios de la aplicación
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @Configuration

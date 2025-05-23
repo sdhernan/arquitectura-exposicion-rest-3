@@ -29,7 +29,7 @@ import ${package}.servicios.service.EjemploService;
 /**
  * Implementación del servicio de Ejemplos
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @Service

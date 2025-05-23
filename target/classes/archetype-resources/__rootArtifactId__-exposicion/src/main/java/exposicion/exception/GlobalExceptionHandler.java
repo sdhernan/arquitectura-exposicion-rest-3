@@ -27,7 +27,7 @@ import ${package}.persistencia.dto.ApiErrorDTO;
 /**
  * Manejador global de excepciones para la API REST
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @ControllerAdvice

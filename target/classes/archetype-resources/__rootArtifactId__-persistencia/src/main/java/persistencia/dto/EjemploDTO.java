@@ -19,7 +19,7 @@ import java.util.Objects;
 /**
  * DTO para transferencia de datos de Ejemplo
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 public class EjemploDTO implements Serializable {

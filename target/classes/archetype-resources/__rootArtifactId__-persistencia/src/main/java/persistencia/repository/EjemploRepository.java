@@ -25,7 +25,7 @@ import ${package}.persistencia.entity.Ejemplo;
 /**
  * Repositorio para la entidad Ejemplo
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @Repository

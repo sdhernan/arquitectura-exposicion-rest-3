@@ -12,6 +12,13 @@
 
 	<name>${artifactId}</name>
 	<description>Proyecto REST con arquitectura de tres capas</description>
+	<developers>
+		<developer>
+			<name>Sadot Nahum Hernandez Moreno</name>
+			<email>sadot.hernandez@example.com</email>
+			<organization>Procesar S A de C V</organization>
+		</developer>
+	</developers>
 
 	<properties>
 		<project.version>${version}</project.version>

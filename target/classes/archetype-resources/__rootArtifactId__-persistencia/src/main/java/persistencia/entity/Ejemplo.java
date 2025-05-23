@@ -26,7 +26,7 @@ import javax.persistence.Table;
 /**
  * Entidad de ejemplo
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @Entity

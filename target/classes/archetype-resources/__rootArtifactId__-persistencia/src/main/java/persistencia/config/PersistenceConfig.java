@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 /**
  * Configuración de persistencia de la aplicación
  * 
- * @author Sistema
+ * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
 @Configuration
