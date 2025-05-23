@@ -18,7 +18,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import ${package}.servicios.config.ServiceConfig;
@@ -31,6 +33,7 @@ import ${package}.servicios.config.ServiceConfig;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = "${package}.exposicion")
+@PropertySource("classpath:../propiedades/${rootArtifactId}.properties")
 @Import(ServiceConfig.class)
 public class AppConfig extends SpringBootServletInitializer {
 

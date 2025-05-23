@@ -12,9 +12,15 @@
  */
 package ${package}.persistencia.config;
 
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jndi.JndiTemplate;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -25,8 +31,25 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @EnableTransactionManagement
+@PropertySource("classpath:../propiedades/${rootArtifactId}.properties")
 @EnableJpaRepositories(basePackages = "${package}.persistencia.repository")
 @EntityScan(basePackages = "${package}.persistencia.entity")
 public class PersistenceConfig {
-    // Configuración adicional de persistencia
+    
+    @Value("${jndi.data.source}")
+    private String jndiDataSource;
+    
+    @Value("${paquete.entidades}")
+    private String paqueteEntidades;
+    
+    /**
+     * Configura el DataSource usando JNDI
+     * 
+     * @return DataSource configurado
+     * @throws Exception si hay problemas al obtener el DataSource
+     */
+    @Bean
+    public DataSource dataSource() throws Exception {
+        return (DataSource) new JndiTemplate().lookup(jndiDataSource);
+    }
 }
