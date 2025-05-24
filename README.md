@@ -1,52 +1,259 @@
-# 🏗️ Arquetipo arquitectura-exposicion-rest-3
+# 🏗️ Arquetipo Arquitectura REST - 3 Capas
 
-Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 2.7+ y Java 11, siguiendo principios de arquitectura limpia y separación de responsabilidades en tres capas: persistencia, servicios y exposición.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 3.2+ y Java 17, siguiendo principios de arquitectura limpia y separación de responsabilidades en tres capas: persistencia, servicios y exposición.
 
 ## 📋 Tabla de Contenidos
 
 1. [Características Principales](#-características-principales)
 2. [Requisitos del Sistema](#-requisitos-del-sistema)
-3. [Instalación Rápida](#-instalación-rápida)
-4. [Uso del Gestor de Arquetipos](#-uso-del-gestor-de-arquetipos)
-5. [Estructura del Proyecto](#-estructura-del-proyecto)
-6. [Generación de Nuevos Proyectos](#-generación-de-nuevos-proyectos)
-7. [Configuración en IDEs](#-configuración-en-ides)
-8. [Solución de Problemas](#-solución-de-problemas)
-9. [Contribución](#-contribución)
-10. [Licencia](#-licencia)
+3. [Estructura del Proyecto](#-estructura-del-proyecto)
+4. [Primeros Pasos](#-primeros-pasos)
+5. [Generación de Nuevos Proyectos](#-generación-de-nuevos-proyectos)
+6. [Configuración](#-configuración)
+7. [Despliegue](#-despliegue)
+8. [Pruebas](#-pruebas)
+9. [Seguridad](#-seguridad)
+10. [Contribución](#-contribución)
+11. [Licencia](#-licencia)
 
 ## ✨ Características Principales
 
-### Arquitectura en 3 Capas
-- **Persistencia**: Acceso a datos con Spring Data JPA
-- **Servicios**: Lógica de negocio independiente
-- **Exposición**: API REST con Spring MVC
+### 🏛️ Arquitectura en 3 Capas
+- **Persistencia**: Acceso a datos con Spring Data JPA 3.0+
+- **Servicios**: Lógica de negocio independiente y desacoplada
+- **Exposición**: API REST con Spring MVC y documentación OpenAPI 3.0
 
-### Características Técnicas
-- ✅ Java 11 compatible
-- ✅ Spring Boot 2.7+
-- ✅ Configuración modular
-- ✅ Manejo centralizado de excepciones
-- ✅ Validación integrada
-- ✅ Pruebas unitarias y de integración
-- ✅ Documentación con OpenAPI/Swagger
-- ✅ Seguridad básica configurada
-- ✅ Logging centralizado
+### 🛠️ Características Técnicas
+- **Lenguaje**: Java 17 (LTS)
+- **Framework**: Spring Boot 3.2+
+- **Persistencia**: Spring Data JPA + Hibernate 6.0+
+- **Base de Datos**: Soporte para Oracle, PostgreSQL, MySQL, H2 (pruebas)
+- **Documentación**: OpenAPI 3.0 con Swagger UI
+- **Seguridad**: Spring Security con JWT
+- **Validación**: Bean Validation 3.0
+- **Logging**: Logback con MDC
+- **Pruebas**: JUnit 5, Mockito, Testcontainers
+- **Contenedorización**: Soporte para Docker
 
-### Ejemplo Incluido
-- Entidad `Afore` completa
-- DTOs de transferencia
-- Repositorio JPA
-- Servicio con lógica de negocio
-- Controlador REST
-- Pruebas unitarias
+### 📦 Módulos Principales
+- **persistencia**: Entidades, repositorios y configuración de acceso a datos
+- **servicios**: Lógica de negocio y casos de uso
+- **exposición**: Controladores REST, DTOs y configuración web
 
 ## 💻 Requisitos del Sistema
 
-- Java 11 JDK instalado
-- Maven 3.6 o superior
-- IDE compatible con Java (Eclipse, IntelliJ IDEA, VS Code)
-- Acceso a repositorios Maven
+- **Java Development Kit (JDK)**: 17 o superior
+- **Maven**: 3.8+ o Gradle 8.0+
+- **Docker** (opcional, para despliegue en contenedores)
+- **Base de Datos**: Oracle 19c, PostgreSQL 14+, MySQL 8.0+, o H2 (para desarrollo)
+- **IDE**: IntelliJ IDEA, Eclipse, VS Code con extensiones de Java/Spring
+
+## 🏗️ Estructura del Proyecto
+
+```
+${projectName}/
+├── ${projectName}-persistencia/     # Capa de persistencia
+│   ├── src/
+│   │   ├── main/java/persistencia/
+│   │   │   ├── config/           # Configuración de persistencia
+│   │   │   ├── entity/           # Entidades JPA
+│   │   │   ├── repository/       # Repositorios Spring Data
+│   │   │   └── dto/              # DTOs de persistencia
+│   │   └── resources/            # Configuración y recursos
+│   └── pom.xml
+│
+├── ${projectName}-servicios/      # Capa de servicios
+│   ├── src/
+│   │   ├── main/java/servicios/
+│   │   │   ├── config/           # Configuración de servicios
+│   │   │   ├── dto/              # DTOs de negocio
+│   │   │   ├── exception/        # Excepciones personalizadas
+│   │   │   ├── mapper/           # Mapeadores (MapStruct)
+│   │   │   └── service/          # Lógica de negocio
+│   │   └── resources/            # Configuración y recursos
+│   └── pom.xml
+│
+├── ${projectName}-exposicion/    # Capa de exposición
+│   ├── src/
+│   │   ├── main/java/exposicion/
+│   │   │   ├── config/           # Configuración web y seguridad
+│   │   │   ├── controller/       # Controladores REST
+│   │   │   ├── dto/              # DTOs de API
+│   │   │   └── exception/        # Manejo de excepciones HTTP
+│   │   └── resources/
+│   │       ├── static/           # Recursos estáticos
+│   │       └── application.yml    # Configuración de la aplicación
+│   └── pom.xml
+│
+└── pom.xml                       # POM raíz del proyecto
+```
+
+## 🚀 Primeros Pasos
+
+### Requisitos Previos
+
+1. Asegúrate de tener instalado:
+   - JDK 17 o superior
+   - Maven 3.8+ o Gradle 8.0+
+   - Opcional: Docker y Docker Compose
+
+2. Clona el repositorio:
+   ```bash
+   git clone https://github.com/tu-usuario/arquitectura-exposicion-rest-3.git
+   cd arquitectura-exposicion-rest-3
+   ```
+
+### Instalación del Arquetipo
+
+1. Instala el arquetipo en tu repositorio local de Maven:
+   ```bash
+   mvn clean install
+   ```
+
+2. Verifica que el arquetipo se haya instalado correctamente:
+   ```bash
+   mvn archetype:generate -DarchetypeCatalog=local
+   ```
+   Deberías ver el arquetipo en la lista mostrada.
+
+## 🏭 Generación de Nuevos Proyectos
+
+### Usando Maven
+
+```bash
+mvn archetype:generate \
+  -DarchetypeGroupId=mx.com.procesar.servicios.internos \
+  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 \
+  -DarchetypeVersion=1.0.0 \
+  -DgroupId=com.tudominio \
+  -DartifactId=mi-proyecto \
+  -Dversion=1.0.0-SNAPSHOT \
+  -Dpackage=com.tudominio.miproyecto \
+  -DprojectName=MiProyecto \
+  -DinteractiveMode=false
+```
+
+### Parámetros del Arquetipo
+
+| Parámetro         | Descripción                                   | Valor por Defecto        |
+|-------------------|-----------------------------------------------|--------------------------|
+| groupId          | Identificador del grupo Maven                 | Requerido                |
+| artifactId       | Identificador del artefacto Maven             | Requerido                |
+| version          | Versión del proyecto                          | 1.0.0-SNAPSHOT          |
+| package          | Paquete base Java                            | Basado en groupId        |
+| projectName      | Nombre legible del proyecto                   | Basado en artifactId     |
+| rootArtifactId   | ID raíz del proyecto (sin sufijo)             | Basado en artifactId     |
+
+
+## ⚙️ Configuración
+
+### Configuración de Base de Datos
+
+El archivo `application.yml` en el módulo de exposición contiene la configuración de la base de datos:
+
+```yaml
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.H2Dialect
+```
+
+### Configuración de Swagger/OpenAPI
+
+La documentación de la API está disponible en:
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
+
+## 🚀 Despliegue
+
+### Despliegue Local
+
+1. Ejecuta la aplicación con Maven:
+   ```bash
+   mvn spring-boot:run -pl mi-proyecto-exposicion
+   ```
+
+2. La aplicación estará disponible en: http://localhost:8080
+
+### Despliegue con Docker
+
+1. Construye las imágenes de Docker:
+   ```bash
+   docker-compose build
+   ```
+
+2. Inicia los contenedores:
+   ```bash
+   docker-compose up -d
+   ```
+
+## 🧪 Pruebas
+
+### Ejecutar Pruebas Unitarias
+
+```bash
+mvn test
+```
+
+### Ejecutar Pruebas de Integración
+
+```bash
+mvn verify -DskipUnitTests=true
+```
+
+### Cobertura de Código
+
+Genera un informe de cobertura con JaCoCo:
+
+```bash
+mvn clean verify -Pcoverage
+```
+
+El informe estará disponible en:
+`target/site/jacoco/index.html`
+
+## 🔒 Seguridad
+
+### Autenticación JWT
+
+La aplicación utiliza JWT para autenticación. Para configurar las credenciales:
+
+```yaml
+jwt:
+  secret: tu-secreto-seguro
+  expiration: 86400000  # 24 horas en milisegundos
+  issuer: tu-aplicacion
+```
+
+### Roles y Permisos
+
+Los roles están definidos en la clase `SecurityConfig` y pueden personalizarse según sea necesario.
+
+## 🤝 Contribución
+
+1. Haz un fork del proyecto
+2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
+3. Realiza tus cambios y haz commit (`git commit -am 'Añadir nueva característica'`)
+4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
+
+---
+
+Desarrollado con ❤️ por [Tu Nombre] - [@tucuenta](https://github.com/tucuenta)
 
 ## 🚀 Instalación Rápida
 

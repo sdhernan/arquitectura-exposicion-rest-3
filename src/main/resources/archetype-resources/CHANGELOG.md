@@ -1,66 +1,63 @@
-# Changelog
+# 📜 Registro de Cambios
 
-Todos los cambios notables en este proyecto serán documentados en este archivo.
+Este archivo documenta todos los cambios notables en el proyecto, siguiendo los principios de [Mantenimiento de un Registro de Cambios](https://keepachangelog.com/es-ES/1.0.0/) y [Versionado Semántico](https://semver.org/spec/v2.0.0.html).
 
-El formato está basado en [Keep a Changelog](https://keepachangelog.com/es-ES/1.0.0/),
-y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [No Publicado]
 
-## [Unreleased]
+### 🚀 Características Nuevas
+- Características en desarrollo para la próxima versión
 
-### 🚀 Nuevas Funcionalidades
+### 🐛 Correcciones de Errores
+- Correcciones pendientes de implementar
 
-- Características nuevas que se están desarrollando
+### 📚 Documentación
+- Actualizaciones pendientes de documentación
 
-### 🐞 Correcciones de Errores
+---
 
-- Correcciones de errores pendientes
+## [1.1.0] - ${date}
 
-### 📔 Documentación
+### 🚀 Nuevas Características
+- Actualización a Spring Boot 3.2 y Java 17 LTS
+- Soporte para múltiples bases de datos (Oracle, PostgreSQL, MySQL, H2)
+- Integración con OpenAPI 3.0 y Swagger UI
+- Autenticación JWT con Spring Security
+- Configuración de Docker para despliegue en contenedores
+- Pruebas con JUnit 5 y Testcontainers
+- Soporte para mapeo con MapStruct
+- Configuración de Logback con MDC
 
-- Cambios en la documentación pendientes
+### 🔧 Mejoras Técnicas
+- Refactorización de la estructura de paquetes
+- Mejora en el manejo de excepciones globales
+- Validación de beans mejorada
+- Configuración modularizada
+- Actualización de dependencias a sus últimas versiones estables
 
-### 🔨 Actualización de Dependencias
+### 🐛 Correcciones
+- Corrección en el manejo de transacciones
+- Mejora en los mensajes de error
+- Correcciones en la documentación de la API
 
-- Actualizaciones de dependencias pendientes
+### 📚 Documentación
+- Guía de inicio rápido actualizada
+- Documentación de la API con ejemplos
+- Instrucciones de despliegue con Docker
+- Guía de contribución
 
-### ⚙️ Tareas Técnicas
+---
 
-- Tareas técnicas y refactorizaciones pendientes
+## [1.0.0] - YYYY-MM-DD
 
-## [1.0.0] - ${date}
-
-### 🚀 Nuevas Funcionalidades
-
-- Implementación completa del ejemplo funcional de Afore en todas las capas
-- Estructura modular con tres capas: persistencia, servicios y exposición
-- Capitalización automática del nombre del proyecto
-- Clases de prueba para cada componente (repositorio, servicio, controlador)
-
-### 📔 Documentación
-
-- Documentación detallada de la estructura del proyecto
-- Ejemplos de uso de la entidad Afore
-- Instrucciones para ejecutar y probar la aplicación
-
-### ⚙️ Tareas Técnicas
-
-- Implementación manual de patrones como Builder (sin dependencia de Lombok)
-- Configuración optimizada para Java 11
-- Manejo de excepciones en la capa de controlador
-
-### 🚀 Funcionalidades Iniciales
-
-- Implementación inicial del proyecto
-- Estructura de tres capas: persistencia, servicios y exposición REST
+### 🚀 Lanzamiento Inicial
+- Estructura base del proyecto con tres capas (persistencia, servicios, exposición)
 - Configuración básica de Spring Boot
-- Ejemplo funcional de CRUD
-
-### 📔 Documentación Inicial
-
-- Documentación inicial del proyecto
-- Configuración de Swagger/OpenAPI para documentación de la API
-
-### 🔨 Configuración de Dependencias
-
-- Configuración inicial de dependencias con Spring Boot 2.7.x
+- Ejemplo funcional con entidad Afore
+- Documentación inicial con Swagger/OpenAPI
 - Configuración para Java 11
+
+### 🔧 Configuración Inicial
+- Spring Boot 2.7.x
+- Spring Data JPA
+- Configuración básica de seguridad
+- Pruebas unitarias con JUnit y Mockito

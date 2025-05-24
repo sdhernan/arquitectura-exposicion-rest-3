@@ -2,18 +2,26 @@
 
 ## 📋 Descripción
 
-Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot, siguiendo principios de arquitectura limpia y separación de responsabilidades. Este proyecto proporciona una estructura base con tres capas principales: persistencia, servicios y exposición.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 3.2+, siguiendo principios de arquitectura limpia y separación de responsabilidades. Este proyecto proporciona una estructura base con tres capas principales: persistencia, servicios y exposición, diseñada para facilitar el desarrollo de aplicaciones empresariales escalables y mantenibles.
 
-## 🚀 Características Principales
+## ✨ Características Principales
 
-- ✅ Arquitectura en 3 capas bien definidas
-- ✅ Configuración modular con Spring Boot
-- ✅ Manejo centralizado de excepciones
-- ✅ Validación de datos integrada
-- ✅ Pruebas unitarias y de integración
-- ✅ Documentación de API con OpenAPI/Swagger
-- ✅ Configuración de seguridad básica
-- ✅ Logging centralizado
+### 🏛️ Arquitectura en 3 Capas
+- **Persistencia**: Acceso a datos con Spring Data JPA 3.0+
+- **Servicios**: Lógica de negocio independiente y desacoplada
+- **Exposición**: API REST con Spring MVC y documentación OpenAPI 3.0
+
+### 🛠️ Tecnologías Clave
+- **Lenguaje**: Java 17 (LTS)
+- **Framework**: Spring Boot 3.2+
+- **Persistencia**: Spring Data JPA + Hibernate 6.0+
+- **Base de Datos**: Soporte para Oracle, PostgreSQL, MySQL, H2 (pruebas)
+- **Documentación**: OpenAPI 3.0 con Swagger UI
+- **Seguridad**: Spring Security con JWT
+- **Validación**: Bean Validation 3.0
+- **Logging**: Logback con MDC
+- **Pruebas**: JUnit 5, Mockito, Testcontainers
+- **Contenedorización**: Soporte para Docker
 
 ## 🏗️ Estructura del Proyecto
 
