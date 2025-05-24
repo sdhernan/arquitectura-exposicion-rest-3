@@ -1,6 +1,6 @@
 # Guía de Uso del Arquetipo arquitectura-exposicion-rest-3
 
-Esta guía proporciona instrucciones detalladas para instalar y utilizar el arquetipo `arquitectura-exposicion-rest-3` para crear nuevos proyectos REST con arquitectura de tres capas. Este arquetipo proporciona una estructura completa para aplicaciones Java 11 con un ejemplo funcional basado en la entidad Afore.
+Esta guía proporciona instrucciones detalladas para instalar y utilizar el arquetipo `arquitectura-exposicion-rest-3` para crear nuevos proyectos REST con arquitectura de tres capas. Este arquetipo proporciona una estructura completa para aplicaciones Java 11 con un ejemplo funcional basado en la entidad Afore, incluyendo implementaciones de todas las capas y clases de prueba.
 
 ## Índice
 
@@ -11,6 +11,8 @@ Esta guía proporciona instrucciones detalladas para instalar y utilizar el arqu
 5. [Solución de Problemas Comunes](#5-solución-de-problemas-comunes)
 6. [Estructura del Proyecto Generado](#6-estructura-del-proyecto-generado)
 7. [Personalización del Proyecto](#7-personalización-del-proyecto)
+8. [Pruebas Unitarias](#8-pruebas-unitarias)
+9. [Ejecución de la Aplicación](#9-ejecución-de-la-aplicación)
 
 ## 1. Características del Arquetipo
 
@@ -51,62 +53,45 @@ El arquetipo incluye clases de prueba para cada capa:
 ## 2. Instalación del Arquetipo
 
 ### Requisitos Previos
+
 - Java 11 instalado
 - Maven 3.5.4 o superior instalado
 - Eclipse IDE con soporte para Maven
 
 ### Pasos para la Instalación
 
-1. Ejecuta el archivo `instalar-arquetipo.bat` incluido en este directorio:
-   - Haz doble clic en el archivo `instalar-arquetipo.bat`
+1. Ejecuta el archivo `arquetipo-rest-manager.bat` incluido en este directorio:
+   - Haz doble clic en el archivo `arquetipo-rest-manager.bat`
    - O abre una ventana de comandos y ejecuta:
-     ```
-     D:\proyectos\arquitectura-exposicion-rest-3\instalar-arquetipo.bat
+
+     ```batch
+     D:\proyectos\arquitectura-exposicion-rest-3\arquetipo-rest-manager.bat
      ```
 
-2. El script configurará las variables de entorno necesarias y ejecutará el comando Maven para instalar el arquetipo en tu repositorio local.
+2. En el menú que aparece, selecciona la opción 1: "Instalar y verificar arquetipo".
 
-3. Espera a que el proceso de instalación se complete. Verás un mensaje de éxito cuando termine.
+3. El script configurará automáticamente las variables de entorno para Java 11 y Maven, y ejecutará los comandos necesarios para instalar el arquetipo en tu repositorio local.
+
+4. Espera a que el proceso de instalación se complete. Verás un mensaje de éxito cuando termine.
 
 ## 3. Verificación de la Instalación
 
-Para verificar que el arquetipo se ha instalado correctamente:
+El script `arquetipo-rest-manager.bat` incluye una opción para verificar que el arquetipo se ha instalado correctamente:
 
-1. Crea un archivo `verificar-arquetipo.bat` con el siguiente contenido:
+1. Ejecuta el archivo `arquetipo-rest-manager.bat` si aún no lo has hecho:
 
-```batch
-@echo off
-SET MAVEN_HOME=D:\Tools\01.-Maven\apache-maven-3.5.4
-SET PATH=%MAVEN_HOME%\bin;%PATH%
+   ```batch
+   D:\proyectos\arquitectura-exposicion-rest-3\arquetipo-rest-manager.bat
+   ```
 
-echo Verificando instalación del arquetipo...
-echo.
+2. En el menú que aparece, selecciona la opción 1: "Instalar y verificar arquetipo".
 
-if exist "%USERPROFILE%\.m2\repository\mx\com\procesar\servicios\internos\arquitectura-exposicion-rest-3\1.0.0\arquitectura-exposicion-rest-3-1.0.0.jar" (
-    echo El arquetipo está correctamente instalado en el repositorio local.
-    echo Ruta: %USERPROFILE%\.m2\repository\mx\com\procesar\servicios\internos\arquitectura-exposicion-rest-3\1.0.0\arquitectura-exposicion-rest-3-1.0.0.jar
-) else (
-    echo El arquetipo NO se encuentra en el repositorio local.
-    echo.
-    echo Reinstalando el arquetipo...
-    cd %~dp0
-    call mvn clean install
-)
+3. El script verificará automáticamente:
+   - Que el arquetipo esté correctamente instalado en tu repositorio local Maven
+   - Que el catálogo de arquetipos exista y contenga el arquetipo
+   - Que todas las dependencias necesarias estén disponibles
 
-echo.
-echo Verificando catálogo de arquetipos...
-if exist "%USERPROFILE%\.m2\repository\archetype-catalog.xml" (
-    echo El catálogo de arquetipos existe.
-) else (
-    echo El catálogo de arquetipos NO existe. Generando...
-    call mvn archetype:crawl -Dcatalog=%USERPROFILE%\.m2\repository\archetype-catalog.xml
-)
-
-echo.
-pause
-```
-
-2. Ejecuta este archivo para verificar que el arquetipo esté correctamente instalado y que el catálogo de arquetipos exista.
+4. Si hay algún problema, el script intentará resolverlo automáticamente.
 
 ## 4. Uso del Arquetipo en Eclipse
 
@@ -134,58 +119,49 @@ pause
      - **Package**: se rellenará automáticamente, pero puedes modificarlo
    - Haz clic en **Finish**
 
-### Método 2: Usando la Línea de Comandos y Luego Importando
+### Método 2: Usando el Script arquetipo-rest-manager.bat
 
-Si tienes problemas con el método anterior, puedes crear el proyecto desde la línea de comandos y luego importarlo a Eclipse:
+El arquetipo incluye un script que facilita la generación de proyectos desde la línea de comandos:
 
-1. Crea un archivo `generar-proyecto.bat` con el siguiente contenido:
+1. Ejecuta el archivo `arquetipo-rest-manager.bat`:
 
-```batch
-@echo off
-SET MAVEN_HOME=D:\Tools\01.-Maven\apache-maven-3.5.4
-SET PATH=%MAVEN_HOME%\bin;%PATH%
+   ```batch
+   D:\proyectos\arquitectura-exposicion-rest-3\arquetipo-rest-manager.bat
+   ```
 
-echo Ingrese el nombre del proyecto (artifactId):
-set /p ARTIFACT_ID=
+2. En el menú que aparece, selecciona la opción 2: "Generar nuevo proyecto".
 
-echo Ingrese el groupId (presione Enter para usar mx.com.procesar.servicios.internos):
-set /p GROUP_ID=
-if "%GROUP_ID%"=="" set GROUP_ID=mx.com.procesar.servicios.internos
+3. El script te solicitará la siguiente información:
+   - **Nombre del proyecto (artifactId)**: Nombre del proyecto sin espacios (ej. miproyecto)
+   - **GroupId**: Identificador del grupo (ej. mx.com.procesar.servicios.internos)
+   - **Versión**: Versión inicial del proyecto (ej. 1.0.0)
+   - **Nombre del proyecto (projectName)**: Nombre del proyecto con la primera letra en mayúscula (ej. Miproyecto)
 
-echo Ingrese la versión (presione Enter para usar 1.0.0):
-set /p VERSION=
-if "%VERSION%"=="" set VERSION=1.0.0
+4. El script generará automáticamente el proyecto con la estructura completa y te mostrará la ruta donde se ha creado.
 
-echo Generando proyecto %ARTIFACT_ID%...
-call mvn archetype:generate -B ^
-  -DarchetypeGroupId=mx.com.procesar.servicios.internos ^
-  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 ^
-  -DarchetypeVersion=1.0.0 ^
-  -DgroupId=%GROUP_ID% ^
-  -DartifactId=%ARTIFACT_ID% ^
-  -Dversion=%VERSION% ^
-  -Dpackage=%GROUP_ID%.%ARTIFACT_ID:.=% ^
-  -DinteractiveMode=false
-
-echo.
-echo Proyecto generado en la carpeta: %ARTIFACT_ID%
-echo.
-echo Para importar este proyecto en Eclipse:
-echo 1. Vaya a File > Import...
-echo 2. Seleccione Maven > Existing Maven Projects
-echo 3. Navegue hasta la carpeta: %CD%\%ARTIFACT_ID%
-echo 4. Haga clic en Finish
-echo.
-pause
-```
-
-2. Ejecuta este archivo y sigue las instrucciones para generar tu proyecto.
-
-3. Luego, importa el proyecto en Eclipse:
+5. Luego, puedes importar el proyecto en Eclipse:
    - Selecciona **File > Import...**
    - Selecciona **Maven > Existing Maven Projects**
    - Navega hasta la carpeta donde se generó el proyecto
    - Haz clic en **Finish**
+
+### Método 3: Usando Maven Directamente
+
+Si prefieres usar Maven directamente, puedes ejecutar el siguiente comando:
+
+```batch
+mvn archetype:generate -B \
+  -DarchetypeGroupId=mx.com.procesar.servicios.internos \
+  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 \
+  -DarchetypeVersion=1.0.0 \
+  -DgroupId=mx.com.procesar.servicios.internos \
+  -DartifactId=miproyecto \
+  -Dversion=1.0.0 \
+  -DprojectName=Miproyecto \
+  -DinteractiveMode=false
+```
+
+Observa que ahora puedes especificar el parámetro `projectName` para controlar la capitalización del nombre del proyecto.
 
 ## 5. Solución de Problemas Comunes
 
@@ -198,20 +174,20 @@ Si ves este error al intentar crear un nuevo proyecto Maven en Eclipse:
    - Verifica que el archivo `archetype-catalog.xml` exista en `C:\Users\[tu-usuario]\.m2\repository\`
 
 2. Actualiza el catálogo de arquetipos:
-   - Crea un archivo `generar-catalogo.bat` con el siguiente contenido:
-     ```batch
-     @echo off
-     SET MAVEN_HOME=D:\Tools\01.-Maven\apache-maven-3.5.4
-     SET PATH=%MAVEN_HOME%\bin;%PATH%
-     
-     echo Generando catálogo de arquetipos...
-     call mvn archetype:crawl -Dcatalog=C:/Users/%USERNAME%/.m2/repository/archetype-catalog.xml
-     
-     echo.
-     echo Catálogo generado correctamente.
-     echo.
-     pause
-     ```
+    - Crea un archivo `generar-catalogo.bat` con el siguiente contenido:
+      ```batch
+      @echo off
+      SET MAVEN_HOME=D:\Tools\01.-Maven\apache-maven-3.5.4
+      SET PATH=%MAVEN_HOME%\bin;%PATH%
+      
+      echo Generando catálogo de arquetipos...
+      call mvn archetype:crawl -Dcatalog=C:/Users/%USERNAME%/.m2/repository/archetype-catalog.xml
+      
+      echo.
+      echo Catálogo generado correctamente.
+      echo.
+      pause
+      ```
    - Ejecuta este archivo para generar o actualizar el catálogo de arquetipos
 
 3. Reinicia Eclipse después de actualizar el catálogo.
@@ -234,46 +210,55 @@ Si ves un error como "Non-resolvable parent POM" después de crear el proyecto:
 
 El proyecto generado tendrá la siguiente estructura:
 
-```
+```text
 mi-proyecto/
-├── mi-proyecto-persistencia/
-│   ├── src/main/java/
+│── mi-proyecto-persistencia/
+│   │── src/main/java/
 │   │   └── mx/com/procesar/servicios/internos/miproyecto/persistencia/
-│   │       ├── config/
+│   │       │── config/
 │   │       │   └── PersistenceConfig.java
-│   │       ├── entity/
-│   │       │   └── Ejemplo.java
+│   │       │── dto/
+│   │       │   └── AforeModel.java
+│   │       │── entity/
+│   │       │   └── Afore.java
 │   │       └── repository/
-│   │           └── EjemploRepository.java
+│   │           └── AforeRepository.java
+│   │── src/test/java/
+│   │   └── mx/com/procesar/servicios/internos/miproyecto/persistencia/repository/
+│   │       └── AforeRepositoryTest.java
 │   └── pom.xml
-├── mi-proyecto-servicios/
-│   ├── src/main/java/
+│── mi-proyecto-servicios/
+│   │── src/main/java/
 │   │   └── mx/com/procesar/servicios/internos/miproyecto/servicios/
-│   │       ├── config/
+│   │       │── config/
 │   │       │   └── ServiceConfig.java
-│   │       ├── dto/
-│   │       │   └── EjemploDTO.java
 │   │       └── service/
-│   │           ├── EjemploService.java
+│   │           │── AforeService.java
 │   │           └── impl/
-│   │               └── EjemploServiceImpl.java
+│   │               └── AforeServiceImpl.java
+│   │── src/test/java/
+│   │   └── mx/com/procesar/servicios/internos/miproyecto/servicios/service/impl/
+│   │       └── AforeServiceImplTest.java
 │   └── pom.xml
-├── mi-proyecto-exposicion/
-│   ├── src/main/java/
+│── mi-proyecto-exposicion/
+│   │── src/main/java/
 │   │   └── mx/com/procesar/servicios/internos/miproyecto/exposicion/
-│   │       ├── config/
-│   │       │   ├── AppConfig.java
+│   │       │── config/
+│   │       │   │── AppConfig.java
 │   │       │   └── OpenApiConfig.java
-│   │       ├── controller/
-│   │       │   └── EjemploController.java
-│   │       ├── dto/
+│   │       │── controller/
+│   │       │   └── AforeController.java
+│   │       │── dto/
 │   │       │   └── ApiErrorDTO.java
 │   │       └── exception/
 │   │           └── GlobalExceptionHandler.java
-│   ├── src/main/resources/
+│   │── src/main/resources/
 │   │   └── application.properties
+│   │── src/test/java/
+│   │   └── mx/com/procesar/servicios/internos/miproyecto/exposicion/controller/
+│   │       └── AforeControllerTest.java
 │   └── pom.xml
-├── pom.xml
+│── pom.xml
 └── README.md
 ```
 
@@ -414,3 +399,121 @@ Una vez generado el proyecto, puedes personalizarlo según tus necesidades:
 5. **Configuración adicional**:
    - Agrega dependencias adicionales según tus necesidades en los archivos POM correspondientes
    - Configura aspectos como seguridad, caché, etc., según lo requiera tu aplicación
+
+## 8. Pruebas Unitarias
+
+El arquetipo incluye pruebas unitarias para cada capa de la aplicación, utilizando JUnit 5, Mockito y Spring Test:
+
+### Pruebas de Repositorio
+
+```java
+@DataJpaTest
+public class AforeRepositoryTest {
+    @Autowired
+    private AforeRepository aforeRepository;
+    
+    @Test
+    public void testFindByClave() {
+        // Configuración de datos de prueba
+        Afore afore = new Afore();
+        afore.setClave("001");
+        afore.setNombre("Afore Ejemplo");
+        aforeRepository.save(afore);
+        
+        // Ejecución de la prueba
+        Optional<Afore> resultado = aforeRepository.findByClave("001");
+        
+        // Verificación
+        assertTrue(resultado.isPresent());
+        assertEquals("Afore Ejemplo", resultado.get().getNombre());
+    }
+}
+```
+
+### Pruebas de Servicio
+
+```java
+@ExtendWith(MockitoExtension.class)
+public class AforeServiceImplTest {
+    @Mock
+    private AforeRepository aforeRepository;
+    
+    @InjectMocks
+    private AforeServiceImpl aforeService;
+    
+    @Test
+    public void testObtenerTodasLasAfores() {
+        // Configuración
+        List<Afore> afores = Arrays.asList(
+            createAfore(1L, "001", "Afore Uno"),
+            createAfore(2L, "002", "Afore Dos")
+        );
+        when(aforeRepository.findAll()).thenReturn(afores);
+        
+        // Ejecución
+        List<AforeModel> resultado = aforeService.obtenerTodasLasAfores();
+        
+        // Verificación
+        assertEquals(2, resultado.size());
+        assertEquals("001", resultado.get(0).getClave());
+    }
+}
+```
+
+### Pruebas de Controlador
+
+```java
+@WebMvcTest(AforeController.class)
+public class AforeControllerTest {
+    @Autowired
+    private MockMvc mockMvc;
+    
+    @MockBean
+    private AforeService aforeService;
+    
+    @Test
+    public void testObtenerTodasLasAfores() throws Exception {
+        // Configuración
+        List<AforeModel> afores = Arrays.asList(
+            createAforeModel(1L, "001", "Afore Uno"),
+            createAforeModel(2L, "002", "Afore Dos")
+        );
+        when(aforeService.obtenerTodasLasAfores()).thenReturn(afores);
+        
+        // Ejecución y verificación
+        mockMvc.perform(get("/api/afores"))
+            .andExpect(status().isOk())
+            .andExpect(jsonPath("$", hasSize(2)))
+            .andExpect(jsonPath("$[0].clave", is("001")));
+    }
+}
+```
+
+## 9. Ejecución de la Aplicación
+
+Para ejecutar la aplicación generada:
+
+1. **Compilación del proyecto**:
+
+   ```bash
+   cd mi-proyecto
+   mvn clean install
+   ```
+
+2. **Ejecución de la aplicación**:
+
+   ```bash
+   cd mi-proyecto-exposicion
+   mvn spring-boot:run
+   ```
+
+3. **Acceso a la API**:
+   - La aplicación estará disponible en `http://localhost:8080`
+   - La documentación de la API (Swagger UI) estará disponible en `http://localhost:8080/swagger-ui.html`
+
+4. **Endpoints disponibles**:
+   - `GET /api/afores`: Obtener todas las afores
+   - `GET /api/afores/{id}`: Obtener una afore por ID
+   - `POST /api/afores`: Crear una nueva afore
+   - `PUT /api/afores/{id}`: Actualizar una afore existente
+   - `DELETE /api/afores/{id}`: Eliminar una afore
