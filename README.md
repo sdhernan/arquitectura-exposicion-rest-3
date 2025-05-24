@@ -1,6 +1,6 @@
 # 🏗️ Arquetipo Arquitectura REST - 3 Capas
 
-Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 3.2+ y Java 17, siguiendo principios de arquitectura limpia y separación de responsabilidades en tres capas: persistencia, servicios y exposición.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 2.1.8.RELEASE y Java 11, siguiendo principios de arquitectura limpia y separación de responsabilidades en tres capas: persistencia, servicios y exposición.
 
 ## 📋 Tabla de Contenidos
 
@@ -19,16 +19,15 @@ Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Bo
 ## ✨ Características Principales
 
 ### 🏛️ Arquitectura en 3 Capas
-- **Persistencia**: Acceso a datos con Spring Data JPA 3.0+
+- **Persistencia**: Acceso a datos con Spring Data JPA 2.1.x
 - **Servicios**: Lógica de negocio independiente y desacoplada
-- **Exposición**: API REST con Spring MVC y documentación OpenAPI 3.0
+- **Exposición**: API REST con Spring MVC
 
 ### 🛠️ Características Técnicas
-- **Lenguaje**: Java 17 (LTS)
-- **Framework**: Spring Boot 3.2+
+- **Lenguaje**: Java 11 (LTS)
+- **Framework**: Spring Boot 2.1.8.RELEASE
 - **Persistencia**: Spring Data JPA + Hibernate 6.0+
-- **Base de Datos**: Soporte para Oracle, PostgreSQL, MySQL, H2 (pruebas)
-- **Documentación**: OpenAPI 3.0 con Swagger UI
+- **Base de Datos**: Soporte para Oracle H2 (pruebas)
 - **Seguridad**: Spring Security con JWT
 - **Validación**: Bean Validation 3.0
 - **Logging**: Logback con MDC
@@ -42,10 +41,10 @@ Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Bo
 
 ## 💻 Requisitos del Sistema
 
-- **Java Development Kit (JDK)**: 17 o superior
+- **Java Development Kit (JDK)**: 11 (LTS)
 - **Maven**: 3.8+ o Gradle 8.0+
 - **Docker** (opcional, para despliegue en contenedores)
-- **Base de Datos**: Oracle 19c, PostgreSQL 14+, MySQL 8.0+, o H2 (para desarrollo)
+- **Base de Datos**: Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, o H2 (para desarrollo)
 - **IDE**: IntelliJ IDEA, Eclipse, VS Code con extensiones de Java/Spring
 
 ## 🏗️ Estructura del Proyecto

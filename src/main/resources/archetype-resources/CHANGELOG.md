@@ -18,9 +18,9 @@ Este archivo documenta todos los cambios notables en el proyecto, siguiendo los 
 ## [1.1.0] - ${date}
 
 ### 🚀 Nuevas Características
-- Actualización a Spring Boot 3.2 y Java 17 LTS
-- Soporte para múltiples bases de datos (Oracle, PostgreSQL, MySQL, H2)
-- Integración con OpenAPI 3.0 y Swagger UI
+- Actualización a Spring Boot 2.1.8.RELEASE y Java 11 LTS
+- Soporte para múltiples bases de datos (Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, H2)
+- Integración con OpenAPI 2.0 y Swagger UI
 - Autenticación JWT con Spring Security
 - Configuración de Docker para despliegue en contenedores
 - Pruebas con JUnit 5 y Testcontainers
@@ -32,7 +32,7 @@ Este archivo documenta todos los cambios notables en el proyecto, siguiendo los 
 - Mejora en el manejo de excepciones globales
 - Validación de beans mejorada
 - Configuración modularizada
-- Actualización de dependencias a sus últimas versiones estables
+- Actualización de dependencias a versiones compatibles con Spring Boot 2.1.8
 
 ### 🐛 Correcciones
 - Corrección en el manejo de transacciones
@@ -47,7 +47,7 @@ Este archivo documenta todos los cambios notables en el proyecto, siguiendo los 
 
 ---
 
-## [1.0.0] - YYYY-MM-DD
+## [1.0.0] - 2023-01-01
 
 ### 🚀 Lanzamiento Inicial
 - Estructura base del proyecto con tres capas (persistencia, servicios, exposición)

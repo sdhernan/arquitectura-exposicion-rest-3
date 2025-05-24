@@ -2,21 +2,21 @@
 
 ## 📋 Descripción
 
-Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 3.2+, siguiendo principios de arquitectura limpia y separación de responsabilidades. Este proyecto proporciona una estructura base con tres capas principales: persistencia, servicios y exposición, diseñada para facilitar el desarrollo de aplicaciones empresariales escalables y mantenibles.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 2.1.8.RELEASE, siguiendo principios de arquitectura limpia y separación de responsabilidades. Este proyecto proporciona una estructura base con tres capas principales: persistencia, servicios y exposición, diseñada para facilitar el desarrollo de aplicaciones empresariales escalables y mantenibles.
 
 ## ✨ Características Principales
 
 ### 🏛️ Arquitectura en 3 Capas
-- **Persistencia**: Acceso a datos con Spring Data JPA 3.0+
+- **Persistencia**: Acceso a datos con Spring Data JPA 2.1.x
 - **Servicios**: Lógica de negocio independiente y desacoplada
 - **Exposición**: API REST con Spring MVC y documentación OpenAPI 3.0
 
 ### 🛠️ Tecnologías Clave
-- **Lenguaje**: Java 17 (LTS)
-- **Framework**: Spring Boot 3.2+
-- **Persistencia**: Spring Data JPA + Hibernate 6.0+
-- **Base de Datos**: Soporte para Oracle, PostgreSQL, MySQL, H2 (pruebas)
-- **Documentación**: OpenAPI 3.0 con Swagger UI
+- **Lenguaje**: Java 11 (LTS)
+- **Framework**: Spring Boot 2.1.8.RELEASE
+- **Persistencia**: Spring Data JPA 2.1.x + Hibernate 5.3.x
+- **Base de Datos**: Soporte para Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, H2 (pruebas)
+- **Documentación**: OpenAPI 2.0 con Swagger UI
 - **Seguridad**: Spring Security con JWT
 - **Validación**: Bean Validation 3.0
 - **Logging**: Logback con MDC
@@ -58,14 +58,13 @@ ${projectName}/
 └── pom.xml                      # POM padre
 ```
 
-## 🛠️ Requisitos Técnicos
+## 💻 Requisitos del Sistema
 
-- Java 11 o superior
-- Maven 3.6+
-- Spring Boot 2.7+
-- Base de datos Oracle (configurable)
-- Git
-- IDE compatible con Java (IntelliJ IDEA, Eclipse, VS Code)
+- **JDK**: 11 (LTS)
+- **Maven**: 3.6+ o Gradle 5.6+
+- **Docker**: 19.03+ (opcional, para despliegue en contenedores)
+- **Base de Datos**: Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, o H2 (para desarrollo)
+- **IDE**: Compatible con Java (IntelliJ IDEA, Eclipse, VS Code)
 
 ## 🚀 Inicio Rápido
 
