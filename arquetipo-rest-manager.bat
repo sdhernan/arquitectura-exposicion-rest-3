@@ -31,14 +31,12 @@ echo  GESTOR DE ARQUETIPO REST 3 CAPAS v1.0
 echo ===================================================
 echo.
 echo  1. Instalar y verificar arquetipo
-echo  2. Generar nuevo proyecto
-echo  3. Salir
+echo  2. Salir
 echo.
-set /p OPCION=Seleccione una opcion (1-3): 
+set /p OPCION=Seleccione una opcion (1-2): 
 
 if "%OPCION%"=="1" goto INSTALAR
-if "%OPCION%"=="2" goto GENERAR
-if "%OPCION%"=="3" goto SALIR
+if "%OPCION%"=="2" goto SALIR
 
 echo Opcion invalida. Por favor, seleccione una opcion valida.
 pause
@@ -123,90 +121,6 @@ echo 4. En "Catalog File", navega hasta: %MVN_REPO%\archetype-catalog.xml
 echo 5. En "Description", escribe "Arquetipos Locales"
 echo 6. Haz clic en OK y luego en Apply and Close
 echo 7. Reinicia Eclipse
-echo.
-pause
-goto MENU
-
-:GENERAR
-cls
-echo ===================================================
-echo  GENERADOR DE PROYECTOS - ARQUITECTURA REST 3 CAPAS
-echo ===================================================
-echo.
-
-echo Ingrese el nombre del proyecto (artifactId):
-set /p ARTIFACT_ID=
-
-echo.
-echo Ingrese el groupId (presione Enter para usar mx.com.procesar.servicios.internos):
-set /p GROUP_ID=
-if "%GROUP_ID%"=="" set GROUP_ID=mx.com.procesar.servicios.internos
-
-echo.
-echo Ingrese la version (presione Enter para usar 1.0.0):
-set /p VERSION=
-if "%VERSION%"=="" set VERSION=1.0.0
-
-echo.
-echo Generando proyecto %ARTIFACT_ID%...
-echo.
-
-echo Usando Maven en: %MAVEN_HOME%
-
-call mvn archetype:generate -B ^
-  -DarchetypeGroupId=mx.com.procesar.servicios.internos ^
-  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 ^
-  -DarchetypeVersion=1.0.0 ^
-  -DgroupId=%GROUP_ID% ^
-  -DartifactId=%ARTIFACT_ID% ^
-  -Dversion=%VERSION% ^
-  -Dpackage=%GROUP_ID%.%ARTIFACT_ID:.=% ^
-  -DinteractiveMode=false
-
-if %ERRORLEVEL% NEQ 0 (
-    echo.
-    echo [ERROR] No se pudo generar el proyecto. Verifique que el arquetipo este instalado correctamente.
-    echo Ejecute la opcion 1 para instalar el arquetipo y luego intente nuevamente.
-    echo.
-    pause
-    goto MENU
-)
-
-echo.
-echo ===================================================
-echo  PROYECTO GENERADO EXITOSAMENTE
-echo ===================================================
-echo.
-echo El proyecto %ARTIFACT_ID% ha sido creado en la carpeta:
-echo %CD%\%ARTIFACT_ID%
-echo.
-echo ESTRUCTURA DEL PROYECTO:
-echo - %ARTIFACT_ID% (proyecto principal)
-echo   - %ARTIFACT_ID%-persistencia (capa de acceso a datos)
-echo   - %ARTIFACT_ID%-servicios (capa de logica de negocio)
-echo   - %ARTIFACT_ID%-exposicion (capa de API REST)
-echo.
-echo PASOS SIGUIENTES:
-echo 1. Importar el proyecto en Eclipse:
-echo    - File > Import... > Maven > Existing Maven Projects
-echo    - Seleccionar la carpeta: %CD%\%ARTIFACT_ID%
-echo.
-echo 2. Compilar el proyecto:
-echo    - Clic derecho en el proyecto > Run As > Maven install
-echo.
-echo 3. Ejecutar la aplicacion:
-echo    - Clic derecho en %ARTIFACT_ID%-exposicion > Run As > Spring Boot App
-echo.
-echo 4. Acceder a la documentacion de la API:
-echo    - http://localhost:8080/%ARTIFACT_ID%/swagger-ui.html
-echo.
-echo ¿Desea abrir la carpeta del proyecto ahora? (S/N)
-set /p OPEN_FOLDER=
-
-if /i "%OPEN_FOLDER%"=="S" (
-    start explorer "%CD%\%ARTIFACT_ID%"
-)
-
 echo.
 pause
 goto MENU

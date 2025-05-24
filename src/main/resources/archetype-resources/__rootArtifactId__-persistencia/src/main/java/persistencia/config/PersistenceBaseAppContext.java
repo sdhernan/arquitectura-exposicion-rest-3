@@ -73,6 +73,7 @@ public abstract class PersistenceBaseAppContext {
 		entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
 		entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
 		entityManagerFactory.setPackagesToScan(paqueteEntidades);
+		entityManagerFactory.setMappingResources("orm.xml");
 		entityManagerFactory.setJpaProperties(propiedades);
 		entityManagerFactory.afterPropertiesSet();
 
