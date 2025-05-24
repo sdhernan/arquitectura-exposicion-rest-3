@@ -1,9 +1,0 @@
-# Regla principal para asignar revisores a los archivos .properties
-*.properties @eceball
-
-# Se deben excluir archivos específicos pero que están relacionados con la regla principal de properties
-!**/*test*.properties
-
-# Reglas generales para otros archivos
-#*.yml @cchang1611
-*.yml @procesarmx/arquitectura_software
