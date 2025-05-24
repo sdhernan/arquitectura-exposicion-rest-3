@@ -1,16 +1,54 @@
 # Guía de Uso del Arquetipo arquitectura-exposicion-rest-3
 
-Esta guía proporciona instrucciones detalladas para instalar y utilizar el arquetipo `arquitectura-exposicion-rest-3` para crear nuevos proyectos REST con arquitectura de tres capas.
+Esta guía proporciona instrucciones detalladas para instalar y utilizar el arquetipo `arquitectura-exposicion-rest-3` para crear nuevos proyectos REST con arquitectura de tres capas. Este arquetipo proporciona una estructura completa para aplicaciones Java 11 con un ejemplo funcional basado en la entidad Afore.
 
 ## Índice
-1. [Instalación del Arquetipo](#1-instalación-del-arquetipo)
-2. [Verificación de la Instalación](#2-verificación-de-la-instalación)
-3. [Uso del Arquetipo en Eclipse](#3-uso-del-arquetipo-en-eclipse)
-4. [Solución de Problemas Comunes](#4-solución-de-problemas-comunes)
-5. [Estructura del Proyecto Generado](#5-estructura-del-proyecto-generado)
-6. [Personalización del Proyecto](#6-personalización-del-proyecto)
 
-## 1. Instalación del Arquetipo
+1. [Características del Arquetipo](#1-características-del-arquetipo)
+2. [Instalación del Arquetipo](#2-instalación-del-arquetipo)
+3. [Verificación de la Instalación](#3-verificación-de-la-instalación)
+4. [Uso del Arquetipo en Eclipse](#4-uso-del-arquetipo-en-eclipse)
+5. [Solución de Problemas Comunes](#5-solución-de-problemas-comunes)
+6. [Estructura del Proyecto Generado](#6-estructura-del-proyecto-generado)
+7. [Personalización del Proyecto](#7-personalización-del-proyecto)
+
+## 1. Características del Arquetipo
+
+El arquetipo `arquitectura-exposicion-rest-3` proporciona una estructura completa para aplicaciones REST con arquitectura de tres capas, utilizando Java 11 y Spring Boot. Las principales características incluyen:
+
+### Estructura Modular
+
+- **Módulo de Persistencia**: Contiene entidades JPA, repositorios y DTOs para la capa de acceso a datos
+- **Módulo de Servicios**: Contiene interfaces de servicio y sus implementaciones para la lógica de negocio
+- **Módulo de Exposición**: Contiene controladores REST para exponer la API
+
+### Ejemplo Funcional con Afore
+
+El arquetipo incluye un ejemplo completo basado en la entidad Afore, que incluye:
+
+- **Entidad Afore**: Una entidad JPA completa con anotaciones y campos relevantes
+- **DTO AforeModel**: Un modelo de datos para transferencia entre capas
+- **Repositorio AforeRepository**: Interfaz con métodos para acceder a los datos de Afore
+- **Servicio AforeService**: Interfaz de servicio con métodos CRUD y de negocio
+- **Implementación AforeServiceImpl**: Implementación completa del servicio
+- **Controlador AforeController**: Controlador REST con endpoints para operaciones CRUD
+
+### Clases de Prueba
+
+El arquetipo incluye clases de prueba para cada capa:
+
+- **AforeRepositoryTest**: Prueba unitaria para el repositorio
+- **AforeServiceImplTest**: Prueba unitaria para la implementación del servicio
+- **AforeControllerTest**: Prueba unitaria para el controlador REST
+
+### Características Adicionales
+
+- **Capitalización Automática**: El arquetipo capitaliza automáticamente la primera letra del nombre del proyecto
+- **Independencia de Dependencias Externas**: No depende de bibliotecas como Lombok
+- **Implementación Manual de Patrones**: Incluye implementaciones manuales de patrones como Builder
+- **Configuración para Java 11**: Configurado específicamente para funcionar con Java 11
+
+## 2. Instalación del Arquetipo
 
 ### Requisitos Previos
 - Java 11 instalado
@@ -30,7 +68,7 @@ Esta guía proporciona instrucciones detalladas para instalar y utilizar el arqu
 
 3. Espera a que el proceso de instalación se complete. Verás un mensaje de éxito cuando termine.
 
-## 2. Verificación de la Instalación
+## 3. Verificación de la Instalación
 
 Para verificar que el arquetipo se ha instalado correctamente:
 
@@ -70,7 +108,7 @@ pause
 
 2. Ejecuta este archivo para verificar que el arquetipo esté correctamente instalado y que el catálogo de arquetipos exista.
 
-## 3. Uso del Arquetipo en Eclipse
+## 4. Uso del Arquetipo en Eclipse
 
 ### Método 1: Usando el Catálogo de Arquetipos
 
@@ -149,7 +187,7 @@ pause
    - Navega hasta la carpeta donde se generó el proyecto
    - Haz clic en **Finish**
 
-## 4. Solución de Problemas Comunes
+## 5. Solución de Problemas Comunes
 
 ### Problema: "No archetypes available for this catalog"
 
@@ -192,7 +230,7 @@ Si ves un error como "Non-resolvable parent POM" después de crear el proyecto:
    - El POM principal debe listar los tres submódulos
    - Los POM de los submódulos deben referenciar al POM principal como su padre
 
-## 5. Estructura del Proyecto Generado
+## 6. Estructura del Proyecto Generado
 
 El proyecto generado tendrá la siguiente estructura:
 
@@ -239,7 +277,122 @@ mi-proyecto/
 └── README.md
 ```
 
-## 6. Personalización del Proyecto
+## 7. Personalización del Proyecto
+
+El arquetipo proporciona una base sólida con un ejemplo funcional basado en la entidad Afore. A continuación, se presentan algunos ejemplos de cómo personalizar y extender el proyecto generado:
+
+### Ejemplo de Uso del Modelo Afore
+
+El arquetipo incluye un ejemplo completo de la entidad Afore con todas sus capas. Puedes usar este ejemplo como referencia para crear tus propias entidades:
+
+#### Entidad JPA
+
+```java
+@Entity
+@Table(name = "NSAR_TC_AFORE")
+public class Afore {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    
+    @Column(name = "CLAVE", length = 10, nullable = false, unique = true)
+    private String clave;
+    
+    @Column(name = "NOMBRE", length = 100, nullable = false)
+    private String nombre;
+    
+    // Getters, setters, equals, hashCode, toString y Builder
+}
+```
+
+#### DTO
+
+```java
+public class AforeModel {
+    private Long id;
+    private String clave;
+    private String nombre;
+    
+    // Getters, setters, equals, hashCode, toString y Builder
+}
+```
+
+#### Repositorio
+
+```java
+public interface AforeRepository extends JpaRepository<Afore, Long> {
+    Optional<Afore> findByClave(String clave);
+    List<Afore> findByNombreContaining(String nombre);
+}
+```
+
+#### Servicio
+
+```java
+public interface AforeService {
+    List<AforeModel> obtenerTodasLasAfores();
+    Optional<AforeModel> obtenerAforePorId(Long id);
+    AforeModel guardarAfore(AforeModel afore);
+    void eliminarAfore(Long id);
+}
+```
+
+#### Implementación del Servicio
+
+```java
+@Service
+public class AforeServiceImpl implements AforeService {
+    private final AforeRepository aforeRepository;
+    
+    @Autowired
+    public AforeServiceImpl(AforeRepository aforeRepository) {
+        this.aforeRepository = aforeRepository;
+    }
+    
+    @Override
+    public List<AforeModel> obtenerTodasLasAfores() {
+        return aforeRepository.findAll().stream()
+                .map(this::convertirAModel)
+                .collect(Collectors.toList());
+    }
+    
+    // Otros métodos y conversiones entre entidad y DTO
+}
+```
+
+#### Controlador REST
+
+```java
+@RestController
+@RequestMapping("/api/afores")
+public class AforeController {
+    private final AforeService aforeService;
+    
+    @Autowired
+    public AforeController(AforeService aforeService) {
+        this.aforeService = aforeService;
+    }
+    
+    @GetMapping
+    public ResponseEntity<List<AforeModel>> obtenerTodasLasAfores() {
+        return ResponseEntity.ok(aforeService.obtenerTodasLasAfores());
+    }
+    
+    // Otros endpoints para operaciones CRUD
+}
+```
+
+### Creando Nuevas Entidades
+
+Para crear nuevas entidades siguiendo el mismo patrón:
+
+1. Crea la entidad JPA en el módulo de persistencia
+2. Crea el DTO correspondiente en el módulo de persistencia
+3. Crea el repositorio en el módulo de persistencia
+4. Crea la interfaz de servicio en el módulo de servicios
+5. Implementa el servicio en el módulo de servicios
+6. Crea el controlador REST en el módulo de exposición
+7. Crea las clases de prueba para cada componente
 
 Una vez generado el proyecto, puedes personalizarlo según tus necesidades:
 

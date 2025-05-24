@@ -36,6 +36,12 @@ public class ApiErrorDTO {
     public ApiErrorDTO() {
     }
     
+    public ApiErrorDTO(String mensaje, int status) {
+        this.mensaje = mensaje;
+        this.status = status;
+        this.timestamp = LocalDateTime.now();
+    }
+    
     public ApiErrorDTO(String mensaje, String detalle, int status, LocalDateTime timestamp, String path) {
         this.mensaje = mensaje;
         this.detalle = detalle;

@@ -2,7 +2,7 @@
 
 ## Descripción
 
-Proyecto REST con arquitectura de tres capas generado a partir del arquetipo arquitectura-exposicion-rest-3.
+Proyecto REST con arquitectura de tres capas generado a partir del arquetipo arquitectura-exposicion-rest-3. Este proyecto incluye un ejemplo funcional basado en la entidad Afore, con implementaciones completas en todas las capas de la arquitectura.
 
 ## Uso del Arquetipo
 
@@ -28,19 +28,20 @@ También puede utilizar el script `arquetipo-rest-manager.bat` incluido en el ar
 El proyecto está organizado en tres módulos principales:
 
 1. **${artifactId}-persistencia**: Módulo para la capa de persistencia de datos
-   - Entidades JPA
-   - Repositorios
+   - Entidades JPA (ejemplo: `Afore.java`)
+   - DTOs (ejemplo: `AforeModel.java`)
+   - Repositorios (ejemplo: `AforeRepository.java`)
    - Configuración de persistencia
 
 2. **${artifactId}-servicios**: Módulo para la capa de servicios de negocio
-   - Servicios
-   - DTOs
+   - Interfaces de servicio (ejemplo: `AforeService.java`)
+   - Implementaciones de servicio (ejemplo: `AforeServiceImpl.java`)
    - Lógica de negocio
 
 3. **${artifactId}-exposicion**: Módulo para la capa de exposición (API REST)
-   - Controladores REST
+   - Controladores REST (ejemplo: `AforeController.java`)
    - Configuración de Spring MVC
-   - Documentación OpenAPI/Swagger
+   - Manejo de excepciones
 
 ## Requisitos
 
@@ -80,10 +81,23 @@ La documentación de la API REST está disponible a través de Swagger UI:
 http://localhost:8080/${artifactId}/swagger-ui.html
 ```
 
+## Ejemplo Funcional: Afore
+
+El proyecto incluye un ejemplo completo basado en la entidad Afore:
+
+- **Entidad**: `Afore.java` - Entidad JPA con anotaciones y campos relevantes
+- **DTO**: `AforeModel.java` - Modelo de datos para transferencia entre capas
+- **Repositorio**: `AforeRepository.java` - Interfaz con métodos para acceder a los datos
+- **Servicio**: `AforeService.java` - Interfaz con definición de operaciones
+- **Implementación**: `AforeServiceImpl.java` - Implementación de la lógica de negocio
+- **Controlador**: `AforeController.java` - Controlador REST con endpoints CRUD
+- **Pruebas**: Clases de prueba para cada componente
+
+Este ejemplo puede servir como base para implementar sus propias entidades y funcionalidades.
+
 ## Configuración
 
-La configuración principal se encuentra en el archivo `application.properties` dentro del módulo de exposición.
-Puede personalizar la configuración según sus necesidades.
+La configuración principal se encuentra en los archivos `application.properties` de cada módulo. Puede personalizar estas configuraciones según sus necesidades.
 
 ## Autor
 

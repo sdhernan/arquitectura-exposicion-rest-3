@@ -21,7 +21,6 @@
 		<dependency>
 			<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 			<artifactId>${rootArtifactId}-persistencia</artifactId>
-			<version>${version}</version>
 		</dependency>
 		
 		<!-- Spring -->

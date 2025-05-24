@@ -29,6 +29,25 @@ y este proyecto adhiere a [Semantic Versioning](https://semver.org/spec/v2.0.0.h
 
 ## [1.0.0] - ${date}
 
+### 🚀 Nuevas Funcionalidades
+
+- Implementación completa del ejemplo funcional de Afore en todas las capas
+- Estructura modular con tres capas: persistencia, servicios y exposición
+- Capitalización automática del nombre del proyecto
+- Clases de prueba para cada componente (repositorio, servicio, controlador)
+
+### 📔 Documentación
+
+- Documentación detallada de la estructura del proyecto
+- Ejemplos de uso de la entidad Afore
+- Instrucciones para ejecutar y probar la aplicación
+
+### ⚙️ Tareas Técnicas
+
+- Implementación manual de patrones como Builder (sin dependencia de Lombok)
+- Configuración optimizada para Java 11
+- Manejo de excepciones en la capa de controlador
+
 ### 🚀 Funcionalidades Iniciales
 
 - Implementación inicial del proyecto

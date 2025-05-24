@@ -60,19 +60,22 @@ public abstract class PersistenceBaseAppContext {
      * @return EntityManagerFactory configurado
      */
     @Bean
-    public EntityManagerFactory entityManagerFactory() {
-        LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-        factory.setDataSource(dataSource());
-        factory.setPackagesToScan(paqueteEntidades);
-        factory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+	public EntityManagerFactory entityManagerFactory() {
 
-        HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
-        vendorAdapter.setDatabase(Database.ORACLE);
-        vendorAdapter.setDatabasePlatform(Oracle12cDialect.class.getName());
-        vendorAdapter.setShowSql(true);
-        factory.setJpaVendorAdapter(vendorAdapter);
+		HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
+		vendorAdapter.setDatabase(Database.ORACLE);
+		vendorAdapter.setShowSql(Boolean.TRUE);
+		vendorAdapter.setDatabasePlatform(Oracle12cDialect.class.getName());
 
-        factory.afterPropertiesSet();
-        return factory.getObject();
-    }
+		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+		entityManagerFactory.setDataSource(dataSource());
+		entityManagerFactory.setJtaDataSource(dataSource());
+		entityManagerFactory.setPersistenceProviderClass(HibernatePersistenceProvider.class);
+		entityManagerFactory.setJpaVendorAdapter(vendorAdapter);
+		entityManagerFactory.setPackagesToScan(paqueteEntidades);
+		entityManagerFactory.setJpaProperties(propiedades);
+		entityManagerFactory.afterPropertiesSet();
+
+		return entityManagerFactory.getObject();
+	}
 }

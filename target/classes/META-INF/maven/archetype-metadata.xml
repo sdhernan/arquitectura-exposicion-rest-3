@@ -20,7 +20,7 @@
             <defaultValue>.gitignore</defaultValue>
         </requiredProperty>
         <requiredProperty key="projectName">
-            <defaultValue>${artifactId}</defaultValue>
+            <defaultValue>${artifactId.substring(0,1).toUpperCase()}${artifactId.substring(1)}</defaultValue>
         </requiredProperty>
 
     </requiredProperties>

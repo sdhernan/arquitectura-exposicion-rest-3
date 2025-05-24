@@ -22,7 +22,6 @@
 		<dependency>
 			<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 			<artifactId>${rootArtifactId}-servicios</artifactId>
-			<version>${version}</version>
 		</dependency>
 		
 		<!-- Spring Boot Web -->
