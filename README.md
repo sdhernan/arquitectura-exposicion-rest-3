@@ -1,104 +1,211 @@
-# Guía de Uso del Arquetipo arquitectura-exposicion-rest-3
+# 🏗️ Arquetipo arquitectura-exposicion-rest-3
 
-Esta guía proporciona instrucciones detalladas para instalar y utilizar el arquetipo `arquitectura-exposicion-rest-3` para crear nuevos proyectos REST con arquitectura de tres capas. Este arquetipo proporciona una estructura completa para aplicaciones Java 11 con un ejemplo funcional basado en la entidad Afore, incluyendo implementaciones de todas las capas y clases de prueba.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot 2.7+ y Java 11, siguiendo principios de arquitectura limpia y separación de responsabilidades en tres capas: persistencia, servicios y exposición.
 
-## Índice
+## 📋 Tabla de Contenidos
 
-1. [Características del Arquetipo](#1-características-del-arquetipo)
-2. [Instalación del Arquetipo](#2-instalación-del-arquetipo)
-3. [Verificación de la Instalación](#3-verificación-de-la-instalación)
-4. [Uso del Arquetipo en Eclipse](#4-uso-del-arquetipo-en-eclipse)
-5. [Solución de Problemas Comunes](#5-solución-de-problemas-comunes)
-6. [Estructura del Proyecto Generado](#6-estructura-del-proyecto-generado)
-7. [Personalización del Proyecto](#7-personalización-del-proyecto)
-8. [Pruebas Unitarias](#8-pruebas-unitarias)
-9. [Ejecución de la Aplicación](#9-ejecución-de-la-aplicación)
+1. [Características Principales](#-características-principales)
+2. [Requisitos del Sistema](#-requisitos-del-sistema)
+3. [Instalación Rápida](#-instalación-rápida)
+4. [Uso del Gestor de Arquetipos](#-uso-del-gestor-de-arquetipos)
+5. [Estructura del Proyecto](#-estructura-del-proyecto)
+6. [Generación de Nuevos Proyectos](#-generación-de-nuevos-proyectos)
+7. [Configuración en IDEs](#-configuración-en-ides)
+8. [Solución de Problemas](#-solución-de-problemas)
+9. [Contribución](#-contribución)
+10. [Licencia](#-licencia)
 
-## 1. Características del Arquetipo
+## ✨ Características Principales
 
-El arquetipo `arquitectura-exposicion-rest-3` proporciona una estructura completa para aplicaciones REST con arquitectura de tres capas, utilizando Java 11 y Spring Boot. Las principales características incluyen:
+### Arquitectura en 3 Capas
+- **Persistencia**: Acceso a datos con Spring Data JPA
+- **Servicios**: Lógica de negocio independiente
+- **Exposición**: API REST con Spring MVC
 
-### Estructura Modular
+### Características Técnicas
+- ✅ Java 11 compatible
+- ✅ Spring Boot 2.7+
+- ✅ Configuración modular
+- ✅ Manejo centralizado de excepciones
+- ✅ Validación integrada
+- ✅ Pruebas unitarias y de integración
+- ✅ Documentación con OpenAPI/Swagger
+- ✅ Seguridad básica configurada
+- ✅ Logging centralizado
 
-- **Módulo de Persistencia**: Contiene entidades JPA, repositorios y DTOs para la capa de acceso a datos
-- **Módulo de Servicios**: Contiene interfaces de servicio y sus implementaciones para la lógica de negocio
-- **Módulo de Exposición**: Contiene controladores REST para exponer la API
+### Ejemplo Incluido
+- Entidad `Afore` completa
+- DTOs de transferencia
+- Repositorio JPA
+- Servicio con lógica de negocio
+- Controlador REST
+- Pruebas unitarias
 
-### Ejemplo Funcional con Afore
+## 💻 Requisitos del Sistema
 
-El arquetipo incluye un ejemplo completo basado en la entidad Afore, que incluye:
+- Java 11 JDK instalado
+- Maven 3.6 o superior
+- IDE compatible con Java (Eclipse, IntelliJ IDEA, VS Code)
+- Acceso a repositorios Maven
 
-- **Entidad Afore**: Una entidad JPA completa con anotaciones y campos relevantes
-- **DTO AforeModel**: Un modelo de datos para transferencia entre capas
-- **Repositorio AforeRepository**: Interfaz con métodos para acceder a los datos de Afore
-- **Servicio AforeService**: Interfaz de servicio con métodos CRUD y de negocio
-- **Implementación AforeServiceImpl**: Implementación completa del servicio
-- **Controlador AforeController**: Controlador REST con endpoints para operaciones CRUD
+## 🚀 Instalación Rápida
 
-### Clases de Prueba
-
-El arquetipo incluye clases de prueba para cada capa:
-
-- **AforeRepositoryTest**: Prueba unitaria para el repositorio
-- **AforeServiceImplTest**: Prueba unitaria para la implementación del servicio
-- **AforeControllerTest**: Prueba unitaria para el controlador REST
-
-### Características Adicionales
-
-- **Capitalización Automática**: El arquetipo capitaliza automáticamente la primera letra del nombre del proyecto
-- **Independencia de Dependencias Externas**: No depende de bibliotecas como Lombok
-- **Implementación Manual de Patrones**: Incluye implementaciones manuales de patrones como Builder
-- **Configuración para Java 11**: Configurado específicamente para funcionar con Java 11
-
-## 2. Instalación del Arquetipo
-
-### Requisitos Previos
-
-- Java 11 instalado
-- Maven 3.5.4 o superior instalado
-- Eclipse IDE con soporte para Maven
-
-### Pasos para la Instalación
-
-1. Ejecuta el archivo `arquetipo-rest-manager.bat` incluido en este directorio:
-   - Haz doble clic en el archivo `arquetipo-rest-manager.bat`
-   - O abre una ventana de comandos y ejecuta:
-
-     ```batch
-     D:\proyectos\arquitectura-exposicion-rest-3\arquetipo-rest-manager.bat
-     ```
-
-2. En el menú que aparece, selecciona la opción 1: "Instalar y verificar arquetipo".
-
-3. El script configurará automáticamente las variables de entorno para Java 11 y Maven, y ejecutará los comandos necesarios para instalar el arquetipo en tu repositorio local.
-
-4. Espera a que el proceso de instalación se complete. Verás un mensaje de éxito cuando termine.
-
-## 3. Verificación de la Instalación
-
-El script `arquetipo-rest-manager.bat` incluye una opción para verificar que el arquetipo se ha instalado correctamente:
-
-1. Ejecuta el archivo `arquetipo-rest-manager.bat` si aún no lo has hecho:
-
-   ```batch
-   D:\proyectos\arquitectura-exposicion-rest-3\arquetipo-rest-manager.bat
+1. **Clonar el repositorio**:
+   ```bash
+   git clone https://github.com/tu-usuario/arquitectura-exposicion-rest-3.git
+   cd arquitectura-exposicion-rest-3
    ```
 
-2. En el menú que aparece, selecciona la opción 1: "Instalar y verificar arquetipo".
+2. **Ejecutar el gestor de arquetipos**:
+   ```bash
+   arquetipo-rest-manager.bat
+   ```
+   O haz doble clic en `arquetipo-rest-manager.bat` en el explorador de archivos.
 
-3. El script verificará automáticamente:
-   - Que el arquetipo esté correctamente instalado en tu repositorio local Maven
-   - Que el catálogo de arquetipos exista y contenga el arquetipo
-   - Que todas las dependencias necesarias estén disponibles
+3. **Seguir las instrucciones en pantalla** para completar la instalación.
 
-4. Si hay algún problema, el script intentará resolverlo automáticamente.
+## 🛠️ Uso del Gestor de Arquetipos
 
-## 4. Uso del Arquetipo en Eclipse
+El archivo `arquetipo-rest-manager.bat` proporciona una interfaz sencilla para gestionar el arquetipo:
 
-### Método 1: Usando el Catálogo de Arquetipos
+1. **Menú Principal**:
+   ```
+   ==================================================
+    GESTOR DE ARQUETIPO REST 3 CAPAS v1.0
+   ==================================================
+   
+   1. Instalar y verificar arquetipo
+   2. Salir
+   ```
 
-1. Primero, asegúrate de que Eclipse conozca tu catálogo de arquetipos local:
+2. **Proceso de Instalación**:
+   - Configura automáticamente Java 11 y Maven
+   - Instala el arquetipo en el repositorio local de Maven
+   - Verifica la instalación
+   - Genera el catálogo de arquetipos si es necesario
+
+3. **Verificación**:
+   - Comprueba que el JAR del arquetipo esté en el repositorio local
+   - Valida la existencia del catálogo de arquetipos
+   - Proporciona instrucciones para configurar Eclipse
+
+## 📁 Estructura del Proyecto
+
+El arquetipo genera una estructura de proyecto modular con la siguiente organización:
+
+```
+${projectName}/
+├── ${projectName}-persistencia/     # Capa de persistencia
+│   ├── src/
+│   │   ├── main/java/persistencia/
+│   │   │   ├── config/           # Configuración de persistencia
+│   │   │   ├── dto/              # Objetos de transferencia de datos
+│   │   │   ├── entity/           # Entidades JPA
+│   │   │   └── repository/       # Repositorios JPA
+│   │   └── resources/            # Recursos (properties, scripts SQL)
+│   └── pom.xml
+│
+├── ${projectName}-servicios/      # Capa de servicios
+│   ├── src/
+│   │   ├── main/java/servicios/
+│   │   │   ├── config/           # Configuración de servicios
+│   │   │   ├── service/           # Interfaces de servicio
+│   │   │   └── service/impl/      # Implementaciones de servicios
+│   │   └── resources/            # Recursos específicos del servicio
+│   └── pom.xml
+│
+├── ${projectName}-exposicion/     # Capa de exposición (API REST)
+│   ├── src/
+│   │   ├── main/java/exposicion/
+│   │   │   ├── config/           # Configuración de la API
+│   │   │   ├── controller/        # Controladores REST
+│   │   │   └── exception/        # Manejo de excepciones
+│   │   └── resources/            # Configuración de la aplicación
+│   └── pom.xml
+│
+└── pom.xml                      # POM padre
+```
+
+## 🚀 Generación de Nuevos Proyectos
+
+### Desde Línea de Comandos
+
+```bash
+mvn archetype:generate \
+  -DarchetypeGroupId=mx.com.procesar.servicios.internos \
+  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 \
+  -DarchetypeVersion=1.0.0 \
+  -DgroupId=com.tudominio \
+  -DartifactId=mi-proyecto \
+  -Dversion=1.0.0-SNAPSHOT \
+  -DprojectName=MiProyecto
+```
+
+### Parámetros Requeridos
+
+| Parámetro | Descripción | Ejemplo |
+|-----------|-------------|---------|
+| groupId | Identificador único del grupo | com.tudominio |
+| artifactId | Identificador del artefacto | mi-proyecto |
+| version | Versión del proyecto | 1.0.0-SNAPSHOT |
+| projectName | Nombre legible del proyecto | MiProyecto |
+
+## 🖥️ Configuración en IDEs
+
+### Eclipse
+1. **Configurar catálogo de arquetipos**:
    - Ve a **Window > Preferences**
+   - Navega a **Maven > Archetypes**
+   - Haz clic en **Add Local Catalog**
+   - Selecciona el archivo: `%USERPROFILE%\.m2\repository\archetype-catalog.xml`
+   - Asigna un nombre descriptivo como "Arquetipos Locales"
+
+2. **Crear nuevo proyecto**:
+   - **File > New > Maven Project**
+   - Selecciona el catálogo local
+   - Elige `arquitectura-exposicion-rest-3`
+   - Completa los parámetros requeridos
+
+### IntelliJ IDEA
+1. **Importar arquetipo**:
+   - **File > New > Project**
+   - Selecciona **Maven**
+   - Marca **Create from archetype**
+   - Haz clic en **Add Archetype**
+   - Completa los datos del arquetipo
+
+## 🔍 Solución de Problemas
+
+### Problemas Comunes
+
+1. **Error de versión de Java**
+   - Asegúrate de tener Java 11 configurado como JDK
+   - Verifica la variable de entorno `JAVA_HOME`
+
+2. **Problemas con Maven**
+   - Limpia la caché: `mvn clean install -U`
+   - Elimina la carpeta `.m2/repository/mx/com/procesar/servicios/internos/arquitectura-exposicion-rest-3` y vuelve a instalar
+
+3. **El arquetipo no aparece en el catálogo**
+   - Verifica que el arquetipo esté instalado correctamente en el repositorio local
+   - Genera manualmente el catálogo: `mvn archetype:crawl`
+
+## 🤝 Contribución
+
+1. Haz un Fork del repositorio
+2. Crea una rama para tu característica (`git checkout -b feature/nueva-funcionalidad`)
+3. Haz commit de tus cambios (`git commit -am 'Añadir nueva funcionalidad'`)
+4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## ✨ Créditos
+
+- Equipo de Desarrollo de Procesar
+- Basado en las mejores prácticas de Spring Boot y arquitectura limpia
    - Navega a **Maven > Archetypes**
    - Haz clic en **Add Local Catalog...**
    - En **Catalog File**, navega hasta `C:\Users\[tu-usuario]\.m2\repository\archetype-catalog.xml`

@@ -1,54 +1,183 @@
-# ${artifactId}
+# ${projectName}
 
-## Descripción
+## 📋 Descripción
 
-Proyecto REST con arquitectura de tres capas generado a partir del arquetipo arquitectura-exposicion-rest-3. Este proyecto incluye un ejemplo funcional basado en la entidad Afore, con implementaciones completas en todas las capas de la arquitectura.
+Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Boot, siguiendo principios de arquitectura limpia y separación de responsabilidades. Este proyecto proporciona una estructura base con tres capas principales: persistencia, servicios y exposición.
 
-## Uso del Arquetipo
+## 🚀 Características Principales
 
-Este proyecto fue generado utilizando el arquetipo `arquitectura-exposicion-rest-3`. Para generar un nuevo proyecto usando este arquetipo, ejecute el siguiente comando:
+- ✅ Arquitectura en 3 capas bien definidas
+- ✅ Configuración modular con Spring Boot
+- ✅ Manejo centralizado de excepciones
+- ✅ Validación de datos integrada
+- ✅ Pruebas unitarias y de integración
+- ✅ Documentación de API con OpenAPI/Swagger
+- ✅ Configuración de seguridad básica
+- ✅ Logging centralizado
 
-```bash
-mvn archetype:generate \
-  -DarchetypeGroupId=procesar \
-  -DarchetypeArtifactId=arquitectura-exposicion-rest-3 \
-  -DarchetypeVersion=1.0.0 \
-  -DgroupId=procesar \
-  -DartifactId=mi-proyecto \
-  -Dversion=1.0.0 \
-  -DcategoriaPOMPadre=servicios \
-  -DlineaNegocio=retiros \
-  -DnombreBranch=ApiBanamex
+## 🏗️ Estructura del Proyecto
+
+```
+${projectName}/
+├── ${projectName}-persistencia/     # Capa de persistencia
+│   ├── src/
+│   │   ├── main/java/persistencia/
+│   │   │   ├── config/           # Configuración de persistencia
+│   │   │   ├── dto/              # Objetos de transferencia de datos
+│   │   │   ├── entity/           # Entidades JPA
+│   │   │   └── repository/       # Repositorios JPA
+│   │   └── resources/            # Recursos (properties, scripts SQL)
+│   └── pom.xml
+│
+├── ${projectName}-servicios/      # Capa de servicios
+│   ├── src/
+│   │   ├── main/java/servicios/
+│   │   │   ├── config/           # Configuración de servicios
+│   │   │   ├── service/           # Interfaces de servicio
+│   │   │   └── service/impl/      # Implementaciones de servicios
+│   │   └── resources/            # Recursos específicos del servicio
+│   └── pom.xml
+│
+├── ${projectName}-exposicion/     # Capa de exposición (API REST)
+│   ├── src/
+│   │   ├── main/java/exposicion/
+│   │   │   ├── config/           # Configuración de la API
+│   │   │   ├── controller/        # Controladores REST
+│   │   │   └── exception/        # Manejo de excepciones
+│   │   └── resources/            # Configuración de la aplicación
+│   └── pom.xml
+│
+└── pom.xml                      # POM padre
 ```
 
-También puede utilizar el script `arquetipo-rest-manager.bat` incluido en el arquetipo para una instalación guiada.
+## 🛠️ Requisitos Técnicos
 
-## Estructura del Proyecto
-
-El proyecto está organizado en tres módulos principales:
-
-1. **${artifactId}-persistencia**: Módulo para la capa de persistencia de datos
-   - Entidades JPA (ejemplo: `Afore.java`)
-   - DTOs (ejemplo: `AforeModel.java`)
-   - Repositorios (ejemplo: `AforeRepository.java`)
-   - Configuración de persistencia
-
-2. **${artifactId}-servicios**: Módulo para la capa de servicios de negocio
-   - Interfaces de servicio (ejemplo: `AforeService.java`)
-   - Implementaciones de servicio (ejemplo: `AforeServiceImpl.java`)
-   - Lógica de negocio
-
-3. **${artifactId}-exposicion**: Módulo para la capa de exposición (API REST)
-   - Controladores REST (ejemplo: `AforeController.java`)
-   - Configuración de Spring MVC
-   - Manejo de excepciones
-
-## Requisitos
-
-- Java 11
+- Java 11 o superior
 - Maven 3.6+
 - Spring Boot 2.7+
 - Base de datos Oracle (configurable)
+- Git
+- IDE compatible con Java (IntelliJ IDEA, Eclipse, VS Code)
+
+## 🚀 Inicio Rápido
+
+### 1. Clonar el repositorio
+```bash
+git clone <repositorio>
+cd ${projectName}
+```
+
+### 2. Configuración de la base de datos
+Editar el archivo `application.properties` con las credenciales de tu base de datos:
+
+```properties
+# Configuración de base de datos
+spring.datasource.url=jdbc:oracle:thin:@//localhost:1521/ORCLCDB
+spring.datasource.username=usuario
+spring.datasource.password=contraseña
+spring.datasource.driver-class-name=oracle.jdbc.OracleDriver
+
+# Configuración de JPA
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+```
+
+### 3. Compilar el proyecto
+```bash
+mvn clean install
+```
+
+### 4. Ejecutar la aplicación
+```bash
+mvn spring-boot:run -pl ${projectName}-exposicion
+```
+
+La aplicación estará disponible en: http://localhost:8080
+
+## 📚 Documentación de la API
+
+La documentación de la API está disponible en:
+- Swagger UI: http://localhost:8080/swagger-ui.html
+- OpenAPI JSON: http://localhost:8080/v3/api-docs
+
+## 🧪 Pruebas
+
+### Ejecutar pruebas unitarias
+```bash
+mvn test
+```
+
+### Ejecutar pruebas de integración
+```bash
+mvn verify -Pintegration-test
+```
+
+## 🔧 Configuración Adicional
+
+### Variables de entorno
+
+| Variable               | Descripción                         | Valor por defecto |
+|-----------------------|-------------------------------------|------------------|
+| SERVER_PORT           | Puerto del servidor                 | 8080             |
+| SPRING_PROFILES_ACTIVE| Perfil de Spring activo            | dev              |
+| DB_URL                | URL de conexión a la base de datos  | -                |
+| DB_USERNAME           | Usuario de la base de datos        | -                |
+| DB_PASSWORD           | Contraseña de la base de datos     | -                |
+
+
+### Perfiles de Spring
+
+- **dev**: Desarrollo local
+- **test**: Ambiente de pruebas
+- **prod**: Producción
+
+## 📦 Dependencias Principales
+
+- **Spring Boot Starter Web**: Para aplicaciones web
+- **Spring Data JPA**: Para acceso a datos
+- **Spring Security**: Para autenticación y autorización
+- **Lombok**: Para reducir código boilerplate
+- **MapStruct**: Para mapeo entre entidades y DTOs
+- **H2 Database**: Base de datos en memoria para pruebas
+- **TestContainers**: Para pruebas de integración
+
+## 🛡️ Seguridad
+
+La aplicación incluye configuración básica de seguridad. Para personalizarla:
+
+1. Modifica `SecurityConfig.java` en el módulo de exposición
+2. Configura usuarios y roles en `application-security.properties`
+
+## 🚀 Despliegue
+
+### Generar artefacto ejecutable
+```bash
+mvn clean package -DskipTests
+```
+
+### Ejecutar en producción
+```bash
+java -jar ${projectName}-exposicion/target/${projectName}-exposicion-${version}.jar \
+  --spring.profiles.active=prod
+```
+
+## 🤝 Contribución
+
+1. Haz un Fork del proyecto
+2. Crea tu rama (`git checkout -b feature/AmazingFeature`)
+3. Haz commit de tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Haz push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
+
+## 📄 Licencia
+
+Este proyecto está bajo la Licencia MIT. Ver el archivo `LICENSE` para más detalles.
+
+## ✨ Créditos
+
+- Equipo de Desarrollo de ${projectName}
+- Basado en las mejores prácticas de Spring Boot y arquitectura limpia
 
 ## Compilación
 

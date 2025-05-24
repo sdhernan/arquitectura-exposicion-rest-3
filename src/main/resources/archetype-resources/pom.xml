@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<parent>
@@ -17,9 +17,10 @@
 
 	<name>${projectName}</name>
 	<description>Proyecto REST con arquitectura de tres capas</description>
+
 	<developers>
 		<developer>
-			<name>Sadot Nahum Hernandez Moreno</name>
+			<name>Nahum Sadot Hernandez Moreno</name>
 			<email>sadot.hernandez@example.com</email>
 			<organization>Procesar S A de C V</organization>
 		</developer>
@@ -32,81 +33,37 @@
 		<maven.compiler.target>11</maven.compiler.target>
 		<maven.compiler.release>11</maven.compiler.release>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		
-		<!-- Versiones de dependencias -->
-		<spring-boot.version>2.7.18</spring-boot.version>
 	</properties>
 
 	<!-- módulos -->
 	<modules>
-		<module>${artifactId}-persistencia</module>
-		<module>${artifactId}-servicios</module>
-		<module>${artifactId}-exposicion</module>
+		<module>${rootArtifactId}-persistencia</module>
+		<module>${rootArtifactId}-servicios</module>
+		<module>${rootArtifactId}-exposicion</module>
 	</modules>
 
 	<dependencyManagement>
 		<dependencies>
 			<!-- Módulos del proyecto -->
 			<dependency>
-				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 				<artifactId>${rootArtifactId}-persistencia</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 				<artifactId>${rootArtifactId}-servicios</artifactId>
 				<version>${project.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 				<artifactId>${rootArtifactId}-exposicion</artifactId>
 				<version>${project.version}</version>
-			</dependency>
-			
-			<!-- Spring Boot BOM -->
-			<dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-dependencies</artifactId>
-				<version>${spring-boot.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
 			</dependency>
 			<dependency>
 				<groupId>com.oracle.weblogic</groupId>
 				<artifactId>weblogic-maven-plugin</artifactId>
 				<version>14.1.1.0</version>
-			</dependency>
-			
-			<!-- Base de datos -->
-			<dependency>
-				<groupId>com.oracle.database.jdbc</groupId>
-				<artifactId>ojdbc8</artifactId>
-				<version>21.5.0.0</version>
-			</dependency>
-			<dependency>
-				<groupId>com.h2database</groupId>
-				<artifactId>h2</artifactId>
-				<version>2.1.214</version>
-				<scope>test</scope>
-			</dependency>
-			
-			<!-- Utilidades -->
-			<dependency>
-				<groupId>org.apache.commons</groupId>
-				<artifactId>commons-lang3</artifactId>
-				<version>3.12.0</version>
-			</dependency>
-			
-			<!-- Testing dependencies removed as requested -->
-			<dependency>
-				<groupId>commons-io</groupId>
-				<artifactId>commons-io</artifactId>
-				<version>2.11.0</version>
-			</dependency>
-			<dependency>
-				<groupId>commons-fileupload</groupId>
-				<artifactId>commons-fileupload</artifactId>
-				<version>1.5</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
