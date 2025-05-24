@@ -10,18 +10,12 @@
 		<version>${version}</version>
 	</parent>
 
-	<artifactId>${artifactId}</artifactId>
+	<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
+	<artifactId>${rootArtifactId}-persistencia</artifactId>
 	<packaging>jar</packaging>
 
-	<name>${artifactId}</name>
-	<description>Módulo de persistencia para ${rootArtifactId}</description>
-	<developers>
-		<developer>
-			<name>Sadot Nahum Hernandez Moreno</name>
-			<email>sadot.hernandez@example.com</email>
-			<organization>Procesar S A de C V</organization>
-		</developer>
-	</developers>
+	<name>${projectName.toLowerCase()}-persistencia</name>
+	<description>Módulo de persistencia para ${projectName}</description>
 
 	<dependencies>
 		<!-- Spring Data JPA -->

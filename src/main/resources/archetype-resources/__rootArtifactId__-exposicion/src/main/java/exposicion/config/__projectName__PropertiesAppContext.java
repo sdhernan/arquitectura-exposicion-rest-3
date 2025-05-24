@@ -1,5 +1,5 @@
 /**
- * ${rootArtifactId}PropertiesAppContext.java
+ * ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PropertiesAppContext.java
  * Fecha de creacion: ${date}
  *
  * Copyright (c) ${year} Procesar S A de C V. 
@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.exposicion.config;
+package ${package}.${projectName.toLowerCase()}.exposicion.config;
 
 import java.nio.file.Paths;
 
@@ -31,7 +31,7 @@ import org.springframework.core.io.FileSystemResource;
  * @version 1.0
  */
 @Configuration
-public class ${rootArtifactId}PropertiesAppContext {
+public class ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PropertiesAppContext {
 
     /**
      * Nombre de variable de JVM para Propiedades
@@ -41,17 +41,17 @@ public class ${rootArtifactId}PropertiesAppContext {
     /**
      * Carpeta de propieades con archivo
      */
-    private static final String CARPETA_PROPIEDADES = "/propiedades/${rootArtifactId}.properties";
+    private static final String CARPETA_PROPIEDADES = "/propiedades/${projectName.toLowerCase()}.properties";
 
     /**
      * Nombre del archivo de log4j que se tiene que cargar
      */
-    private static final String NOMBRE_ARCHIVO_LOG4J2 = "/propiedades/log4j2/${rootArtifactId}-log4j2.xml";
+    private static final String NOMBRE_ARCHIVO_LOG4J2 = "/propiedades/log4j2/${projectName.toLowerCase()}-log4j2.xml";
 
     /**
      * Logger
      */
-    private static final Logger LOGGER = LoggerFactory.getLogger(${rootArtifactId}PropertiesAppContext.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PropertiesAppContext.class);
 
     /**
      * Metodo para cargar el archivo de propiedades

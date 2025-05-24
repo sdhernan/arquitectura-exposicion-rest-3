@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.exposicion.exception;
+package ${package}.${projectName.toLowerCase()}.exposicion.exception;
 
 import java.time.LocalDateTime;
 
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
-import ${package}.persistencia.dto.ApiErrorDTO;
+import ${package}.${projectName.toLowerCase()}.persistencia.dto.ApiErrorDTO;
 
 /**
  * Manejador global de excepciones para la API REST

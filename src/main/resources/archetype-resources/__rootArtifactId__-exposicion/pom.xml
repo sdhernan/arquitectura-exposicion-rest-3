@@ -10,50 +10,32 @@
 		<version>${version}</version>
 	</parent>
 
-	<artifactId>${artifactId}</artifactId>
+	<groupId>${groupId}.${rootArtifactId}</groupId>
+	<artifactId>${rootArtifactId}-exposicion</artifactId>
 	<packaging>war</packaging>
 
-	<name>${artifactId}</name>
-	<description>Módulo de exposición REST para ${rootArtifactId}</description>
-	<developers>
-		<developer>
-			<name>Sadot Nahum Hernandez Moreno</name>
-			<email>sadot.hernandez@example.com</email>
-			<organization>Procesar S A de C V</organization>
-		</developer>
-	</developers>
+	<name>${projectName.toLowerCase()}-exposicion</name>
+	<description>Módulo de exposición REST para ${projectName}</description>
 
 	<dependencies>
-		<!-- Dependencias de módulos del proyecto -->
+		<!-- Módulo de servicios -->
 		<dependency>
-			<groupId>${groupId}</groupId>
+			<groupId>${groupId}.${projectName.toLowerCase()}</groupId>
 			<artifactId>${rootArtifactId}-servicios</artifactId>
+			<version>${version}</version>
 		</dependency>
-		<dependency>
-			<groupId>${groupId}</groupId>
-			<artifactId>${rootArtifactId}-persistencia</artifactId>
-		</dependency>
-
-		<!-- Spring Boot -->
+		
+		<!-- Spring Boot Web -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-validation</artifactId>
-		</dependency>
+		
+		<!-- Spring Boot Tomcat (provided) -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
 			<scope>provided</scope>
-		</dependency>
-		
-		<!-- Documentación API -->
-		<dependency>
-			<groupId>org.springdoc</groupId>
-			<artifactId>springdoc-openapi-ui</artifactId>
-			<version>1.6.15</version>
 		</dependency>
 		
 		<!-- Testing -->
@@ -65,18 +47,10 @@
 	</dependencies>
 
 	<build>
-		<finalName>${rootArtifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>repackage</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

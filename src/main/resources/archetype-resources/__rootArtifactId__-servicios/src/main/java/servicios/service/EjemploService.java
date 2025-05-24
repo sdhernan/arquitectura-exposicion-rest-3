@@ -10,12 +10,12 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.servicios.service;
+package ${package}.${projectName.toLowerCase()}.servicios.service;
 
 import java.util.List;
 import java.util.Optional;
 
-import ${package}.persistencia.dto.EjemploDTO;
+import ${package}.${projectName.toLowerCase()}.persistencia.dto.EjemploDTO;
 
 /**
  * Interfaz de servicio para operaciones con Ejemplos

@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.persistencia.dto;
+package ${package}.${projectName.toLowerCase()}.persistencia.dto;
 
 import java.time.LocalDateTime;
 import java.util.Objects;

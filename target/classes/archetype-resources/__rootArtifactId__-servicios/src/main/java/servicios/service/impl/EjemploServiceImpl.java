@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.servicios.service.impl;
+package ${package}.${projectName.toLowerCase()}.servicios.service.impl;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -21,10 +21,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import ${package}.persistencia.entity.Ejemplo;
-import ${package}.persistencia.repository.EjemploRepository;
-import ${package}.persistencia.dto.EjemploDTO;
-import ${package}.servicios.service.EjemploService;
+import ${package}.${projectName.toLowerCase()}.persistencia.entity.Ejemplo;
+import ${package}.${projectName.toLowerCase()}.persistencia.repository.EjemploRepository;
+import ${package}.${projectName.toLowerCase()}.persistencia.dto.EjemploDTO;
+import ${package}.${projectName.toLowerCase()}.servicios.service.EjemploService;
 
 /**
  * Implementación del servicio de Ejemplos

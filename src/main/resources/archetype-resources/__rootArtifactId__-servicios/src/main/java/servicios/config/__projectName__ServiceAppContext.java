@@ -1,5 +1,5 @@
 /**
- * ${rootArtifactId}ServiceAppContext.java
+ * ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}ServiceAppContext.java
  * Fecha de creacion: ${date}
  *
  * Copyright (c) ${year} Procesar S A de C V. 
@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.servicios.config;
+package ${package}.${projectName.toLowerCase()}.servicios.config;
 
 import javax.persistence.EntityManagerFactory;
 
@@ -27,7 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import ${package}.persistencia.config.${rootArtifactId}PersistenceAppContext;
+import ${package}.${projectName.toLowerCase()}.persistencia.config.${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext;
 
 /**
  * Clase de Contexto de Spring para Servicios
@@ -39,11 +39,11 @@ import ${package}.persistencia.config.${rootArtifactId}PersistenceAppContext;
 @ComponentScan(includeFilters = { 
     @Filter(type = FilterType.ANNOTATION, value = Service.class),
     @Filter(type = FilterType.ANNOTATION, value = Component.class) 
-}, basePackages = { "${package}.servicios.service.impl" })
+}, basePackages = { "${package}.${projectName.toLowerCase()}.servicios.service.impl" })
 @EnableTransactionManagement
 @EnableCaching
-@Import(${rootArtifactId}PersistenceAppContext.class)
-public class ${rootArtifactId}ServiceAppContext {
+@Import(${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext.class)
+public class ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}ServiceAppContext {
 
     /**
      * Metodo Bean de Transaction Manager

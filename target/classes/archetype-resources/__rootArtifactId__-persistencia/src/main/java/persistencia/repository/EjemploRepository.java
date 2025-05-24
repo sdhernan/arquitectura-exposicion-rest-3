@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.persistencia.repository;
+package ${package}.${projectName.toLowerCase()}.persistencia.repository;
 
 import java.util.List;
 import java.util.Optional;
@@ -20,7 +20,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import ${package}.persistencia.entity.Ejemplo;
+import ${package}.${projectName.toLowerCase()}.persistencia.entity.Ejemplo;
 
 /**
  * Repositorio para la entidad Ejemplo

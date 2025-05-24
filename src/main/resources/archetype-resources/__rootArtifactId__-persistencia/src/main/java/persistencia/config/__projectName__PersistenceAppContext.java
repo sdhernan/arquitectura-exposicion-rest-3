@@ -1,5 +1,5 @@
 /**
- * ${rootArtifactId}PersistenceAppContext.java
+ * ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext.java
  * Fecha de creacion: ${date}
  *
  * Copyright (c) ${year} Procesar S A de C V. 
@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.persistencia.config;
+package ${package}.${projectName.toLowerCase()}.persistencia.config;
 
 import javax.sql.DataSource;
 
@@ -30,8 +30,8 @@ import org.springframework.stereotype.Repository;
  */
 @Configuration
 @EnableJpaRepositories(includeFilters = @ComponentScan.Filter(value = Repository.class, type = FilterType.ANNOTATION), basePackages = {
-        "${package}.persistencia.repository" })
-public class ${rootArtifactId}PersistenceAppContext extends PersistenceBaseAppContext {
+        "${package}.${projectName.toLowerCase()}.persistencia.repository" })
+public class ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext extends PersistenceBaseAppContext {
 
     /**
      * JNDI de Data Source

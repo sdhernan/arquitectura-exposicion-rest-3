@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.exposicion.controller;
+package ${package}.${projectName.toLowerCase()}.exposicion.controller;
 
 import java.util.List;
 
@@ -27,8 +27,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import ${package}.persistencia.dto.EjemploDTO;
-import ${package}.servicios.service.EjemploService;
+import ${package}.${projectName.toLowerCase()}.persistencia.dto.EjemploDTO;
+import ${package}.${projectName.toLowerCase()}.servicios.service.EjemploService;
 
 /**
  * Controlador REST para operaciones con Ejemplos

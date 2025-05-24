@@ -1,5 +1,5 @@
 /**
- * ${rootArtifactId}AppInitializer.java
+ * ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}AppInitializer.java
  * Fecha de creacion: ${date}
  *
  * Copyright (c) ${year} Procesar S A de C V. 
@@ -10,7 +10,7 @@
  * no debera ser divulgada y solo se podra utilizar de acuerdo
  * a los terminos que determine la propia empresa.
  */
-package ${package}.exposicion.config;
+package ${package}.${projectName.toLowerCase()}.exposicion.config;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,8 +32,8 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
-import ${package}.persistencia.config.${rootArtifactId}PersistenceAppContext;
-import ${package}.servicios.config.${rootArtifactId}ServiceAppContext;
+import ${package}.${projectName.toLowerCase()}.persistencia.config.${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext;
+import ${package}.${projectName.toLowerCase()}.servicios.config.${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}ServiceAppContext;
 
 /**
  * Initializer de aplicativo web
@@ -41,33 +41,44 @@ import ${package}.servicios.config.${rootArtifactId}ServiceAppContext;
  * @author Sadot Nahum Hernandez Moreno
  * @version 1.0
  */
-@Import({ ${rootArtifactId}PropertiesAppContext.class, ${rootArtifactId}PersistenceAppContext.class, ${rootArtifactId}ServiceAppContext.class })
+@Import({ ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PropertiesAppContext.class, ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}PersistenceAppContext.class, ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}ServiceAppContext.class })
 @ComponentScan(includeFilters = { 
     @Filter(type = FilterType.ANNOTATION, value = RestController.class),
     @Filter(type = FilterType.ANNOTATION, value = Component.class) 
-}, basePackages = { "${package}.exposicion" })
+}, basePackages = { "${package}.${projectName.toLowerCase()}.exposicion" })
 @SpringBootApplication
 @EnableAsync
-public class ${rootArtifactId}AppInitializer extends SpringBootServletInitializer implements WebMvcConfigurer {
+public class ${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}AppInitializer extends SpringBootServletInitializer implements WebMvcConfigurer {
 
     /**
-     * Método principal para iniciar la aplicación
+     * Metodo main para iniciar la aplicacion
      * 
-     * @param args argumentos de línea de comandos
+     * @param args Argumentos de la aplicacion
      */
     public static void main(String[] args) {
-        SpringApplication.run(${rootArtifactId}AppInitializer.class, args);
-    }
-
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-        return application.sources(${rootArtifactId}AppInitializer.class);
+        SpringApplication.run(${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}AppInitializer.class, args);
     }
 
     /**
-     * Configuración del ViewResolver para vistas JSP
+     * Configuracion de la aplicacion
+     */
+    @Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(${projectName.substring(0,1).toUpperCase()}${projectName.substring(1)}AppInitializer.class);
+    }
+
+    /**
+     * Configuracion del servlet por defecto
+     */
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+
+    /**
+     * Configuracion del resolver de vistas
      * 
-     * @return ViewResolver configurado
+     * @return ViewResolver
      */
     @Bean
     public ViewResolver viewResolver() {
@@ -78,21 +89,14 @@ public class ${rootArtifactId}AppInitializer extends SpringBootServletInitialize
     }
 
     /**
-     * Configuración para manejo de archivos multipart
+     * Configuracion del resolver de multipart
      * 
-     * @return CommonsMultipartResolver configurado
+     * @return CommonsMultipartResolver
      */
     @Bean
     public CommonsMultipartResolver multipartResolver() {
         CommonsMultipartResolver resolver = new CommonsMultipartResolver();
         resolver.setDefaultEncoding("utf-8");
-        resolver.setMaxUploadSize(10485760);
-        resolver.setMaxInMemorySize(4096);
         return resolver;
-    }
-
-    @Override
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-        configurer.enable();
     }
 }

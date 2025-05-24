@@ -15,7 +15,7 @@
 	<version>${version}</version>
 	<packaging>pom</packaging>
 
-	<name>${artifactId}</name>
+	<name>${projectName}</name>
 	<description>Proyecto REST con arquitectura de tres capas</description>
 	<developers>
 		<developer>
@@ -41,7 +41,6 @@
 		<jackson.version>2.13.5</jackson.version>
 		<slf4j.version>1.7.36</slf4j.version>
 		<logback.version>1.2.12</logback.version>
-		<junit.version>5.8.2</junit.version>
 		<mockito.version>4.5.1</mockito.version>
 	</properties>
 
@@ -54,6 +53,23 @@
 
 	<dependencyManagement>
 		<dependencies>
+			<!-- Módulos del proyecto -->
+			<dependency>
+				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<artifactId>${rootArtifactId}-persistencia</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<artifactId>${rootArtifactId}-servicios</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>${groupId}.${rootArtifactId}</groupId>
+				<artifactId>${rootArtifactId}-exposicion</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			
 			<!-- Spring Boot BOM -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
@@ -61,23 +77,6 @@
 				<version>${spring-boot.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
-			</dependency>
-
-			<!-- Módulos del proyecto -->
-			<dependency>
-				<groupId>${groupId}</groupId>
-				<artifactId>${artifactId}-persistencia</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${groupId}</groupId>
-				<artifactId>${artifactId}-servicios</artifactId>
-				<version>${project.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>${groupId}</groupId>
-				<artifactId>${artifactId}-exposicion</artifactId>
-				<version>${project.version}</version>
 			</dependency>
 			
 			<!-- Base de datos -->
@@ -99,6 +98,8 @@
 				<artifactId>commons-lang3</artifactId>
 				<version>3.12.0</version>
 			</dependency>
+			
+			<!-- Testing dependencies removed as requested -->
 			<dependency>
 				<groupId>commons-io</groupId>
 				<artifactId>commons-io</artifactId>
