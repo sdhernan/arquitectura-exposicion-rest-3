@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
 
 import ${package}.${projectName.toLowerCase()}.persistencia.dto.AforeModel;
 import ${package}.${projectName.toLowerCase()}.persistencia.dto.ApiErrorDTO;
@@ -49,7 +50,7 @@ public class AforeController {
      *
      * @return lista de todas las Afores
      */
-    @GetMapping
+    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AforeModel>> obtenerTodasLasAfores() {
         List<AforeModel> afores = aforeService.obtenerTodasLasAfores();
         return ResponseEntity.ok(afores);
@@ -61,7 +62,7 @@ public class AforeController {
      * @param id el ID de la Afore
      * @return la Afore si existe, o un error 404 si no existe
      */
-    @GetMapping("/{id}")
+    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> obtenerAforePorId(@PathVariable Long id) {
         Optional<AforeModel> afore = aforeService.obtenerAforePorId(id);
         if (afore.isPresent()) {
@@ -78,7 +79,7 @@ public class AforeController {
      * @param clave la clave de la Afore
      * @return la Afore si existe, o un error 404 si no existe
      */
-    @GetMapping("/clave/{clave}")
+    @GetMapping(value = "/clave/{clave}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> obtenerAforePorClave(@PathVariable String clave) {
         Optional<AforeModel> afore = aforeService.obtenerAforePorClave(clave);
         if (afore.isPresent()) {
@@ -94,7 +95,7 @@ public class AforeController {
      *
      * @return lista de Afores activas
      */
-    @GetMapping("/activas")
+    @GetMapping(value = "/activas", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<AforeModel>> obtenerAforesActivas() {
         List<AforeModel> afores = aforeService.obtenerAforesActivas();
         return ResponseEntity.ok(afores);
@@ -118,7 +119,7 @@ public class AforeController {
      * @param afore la Afore a crear
      * @return la Afore creada
      */
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<AforeModel> crearAfore(@RequestBody AforeModel afore) {
         AforeModel nuevaAfore = aforeService.guardarAfore(afore);
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevaAfore);
@@ -131,7 +132,7 @@ public class AforeController {
      * @param afore los nuevos datos de la Afore
      * @return la Afore actualizada, o un error 404 si no existe
      */
-    @PutMapping("/{id}")
+    @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> actualizarAfore(@PathVariable Long id, @RequestBody AforeModel afore) {
         Optional<AforeModel> aforeActualizada = aforeService.actualizarAfore(id, afore);
         if (aforeActualizada.isPresent()) {
@@ -148,7 +149,7 @@ public class AforeController {
      * @param id el ID de la Afore a eliminar
      * @return respuesta sin contenido si se eliminó correctamente, o un error 404 si no existe
      */
-    @DeleteMapping("/{id}")
+    @DeleteMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> eliminarAfore(@PathVariable Long id) {
         boolean eliminado = aforeService.eliminarAfore(id);
         if (eliminado) {
