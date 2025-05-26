@@ -61,10 +61,9 @@ ${projectName}/
 ## 💻 Requisitos del Sistema
 
 - **JDK**: 11 (LTS)
-- **Maven**: 3.6+ o Gradle 5.6+
-- **Docker**: 19.03+ (opcional, para despliegue en contenedores)
-- **Base de Datos**: Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, o H2 (para desarrollo)
-- **IDE**: Compatible con Java (IntelliJ IDEA, Eclipse, VS Code)
+- **Maven**: 2.5+
+- **Base de Datos**: Oracle 19c+ o H2 (para desarrollo)
+- **IDE**: Compatible con Java (Eclipse)
 
 ## 🚀 Inicio Rápido
 
@@ -102,12 +101,6 @@ mvn spring-boot:run -pl ${projectName}-exposicion
 
 La aplicación estará disponible en: http://localhost:8080
 
-## 📚 Documentación de la API
-
-La documentación de la API está disponible en:
-- Swagger UI: http://localhost:8080/swagger-ui.html
-- OpenAPI JSON: http://localhost:8080/v3/api-docs
-
 ## 🧪 Pruebas
 
 ### Ejecutar pruebas unitarias
@@ -124,13 +117,12 @@ mvn verify -Pintegration-test
 
 ### Variables de entorno
 
-| Variable               | Descripción                         | Valor por defecto |
+| Variable               | Descripción                        | Valor por defecto |
 |-----------------------|-------------------------------------|------------------|
 | SERVER_PORT           | Puerto del servidor                 | 8080             |
-| SPRING_PROFILES_ACTIVE| Perfil de Spring activo            | dev              |
 | DB_URL                | URL de conexión a la base de datos  | -                |
-| DB_USERNAME           | Usuario de la base de datos        | -                |
-| DB_PASSWORD           | Contraseña de la base de datos     | -                |
+| DB_USERNAME           | Usuario de la base de datos         | -                |
+| DB_PASSWORD           | Contraseña de la base de datos      | -                |
 
 
 ### Perfiles de Spring
@@ -207,14 +199,6 @@ Para ejecutar la aplicación, puede utilizar el plugin de Spring Boot:
 ```bash
 cd ${artifactId}-exposicion
 mvn spring-boot:run
-```
-
-## Documentación de la API
-
-La documentación de la API REST está disponible a través de Swagger UI:
-
-```bash
-http://localhost:8080/${artifactId}/swagger-ui.html
 ```
 
 ## Ejemplo Funcional: Afore
