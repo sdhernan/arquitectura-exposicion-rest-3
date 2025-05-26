@@ -32,7 +32,6 @@ Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Bo
 - **Validación**: Bean Validation 3.0
 - **Logging**: Logback con MDC
 - **Pruebas**: JUnit 5, Mockito, Testcontainers
-- **Contenedorización**: Soporte para Docker
 
 ### 📦 Módulos Principales
 - **persistencia**: Entidades, repositorios y configuración de acceso a datos
@@ -42,9 +41,9 @@ Arquitectura de referencia para el desarrollo de aplicaciones REST con Spring Bo
 ## 💻 Requisitos del Sistema
 
 - **Java Development Kit (JDK)**: 11 (LTS)
-- **Maven**: 3.8+ o Gradle 8.0+
+- **Maven**: 2.5+
 - **Docker** (opcional, para despliegue en contenedores)
-- **Base de Datos**: Oracle 12c+, PostgreSQL 9.6+, MySQL 5.7+, o H2 (para desarrollo)
+- **Base de Datos**: Oracle 19c+, o H2 (para desarrollo)
 - **IDE**: IntelliJ IDEA, Eclipse, VS Code con extensiones de Java/Spring
 
 ## 🏗️ Estructura del Proyecto
@@ -176,18 +175,6 @@ spring:
    ```
 
 2. La aplicación estará disponible en: http://localhost:8080
-
-### Despliegue con Docker
-
-1. Construye las imágenes de Docker:
-   ```bash
-   docker-compose build
-   ```
-
-2. Inicia los contenedores:
-   ```bash
-   docker-compose up -d
-   ```
 
 ## 🧪 Pruebas
 
