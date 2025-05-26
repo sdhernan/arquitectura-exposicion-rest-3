@@ -92,9 +92,8 @@ ${projectName}/
 ### Requisitos Previos
 
 1. Asegúrate de tener instalado:
-   - JDK 17 o superior
-   - Maven 3.8+ o Gradle 8.0+
-   - Opcional: Docker y Docker Compose
+   - JDK 11 o superior
+   - Maven 2.5+
 
 2. Clona el repositorio:
    ```bash
@@ -167,12 +166,6 @@ spring:
         dialect: org.hibernate.dialect.H2Dialect
 ```
 
-### Configuración de Swagger/OpenAPI
-
-La documentación de la API está disponible en:
-- Swagger UI: http://localhost:8080/swagger-ui.html
-- OpenAPI JSON: http://localhost:8080/v3/api-docs
-
 ## 🚀 Despliegue
 
 ### Despliegue Local
@@ -222,17 +215,6 @@ El informe estará disponible en:
 `target/site/jacoco/index.html`
 
 ## 🔒 Seguridad
-
-### Autenticación JWT
-
-La aplicación utiliza JWT para autenticación. Para configurar las credenciales:
-
-```yaml
-jwt:
-  secret: tu-secreto-seguro
-  expiration: 86400000  # 24 horas en milisegundos
-  issuer: tu-aplicacion
-```
 
 ### Roles y Permisos
 
